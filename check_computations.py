@@ -15,7 +15,7 @@ assert bern == [1, Rational(487, 896), Rational(165, 224), Rational(297, 224), R
                 Rational(711, 224), Rational(1899, 448), Rational(665, 128)]
 assert all(b > 0 for b in bern)
 
-# Remark: at alpha = 9 the bound fails, 17^9 < 11 * 13^9.
+# Remark: at alpha = 9 and t = 1/12 the lower bound -11/12 + (13/12) 11^(1/9) is below 1/2, because 11 * 13^9 < 17^9.
 assert 11 * 13**9 < 17**9
 tt = Rational(1, 12)
 assert (tt - 1 + (1 + tt) * ((1 - tt) / tt) ** Rational(1, 9) - Rational(1, 2)).evalf(30) < 0

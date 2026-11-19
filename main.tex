@@ -36,8 +36,8 @@ firing rates and $\alpha>25$ the infinitely reinforced edges form whiskers, tree
 Kriebel lowered the threshold to $17/4$. We prove the same conclusion for every $\alpha>4/3$, and show that for
 $4/3<\alpha\le 2$ every component is a star. The constant cannot be lowered, since for $\alpha<4/3$ the triangle keeps
 all three edges with positive probability. This answers the whisker problem of Kleptsyn and of Aletti et al., except
-at $\alpha=4/3$. For $\alpha\le 2$ the proof evaluates the Hessian of a Lyapunov function on a test vector whose
-increments alternate along a path between two edges next to leaves.
+at $\alpha=4/3$. For $\alpha\le 2$ the Hessian of a Lyapunov function is positive on a vector supported on a path between two
+edges adjacent to leaves of the tree and alternating in sign along it.
 \end{abstract}
 
 \noindent\textit{Mathematics Subject Classification (2020):} 60K35, 37C75.\\
@@ -45,14 +45,13 @@ increments alternate along a path between two edges next to leaves.
 
 \section{Introduction}\label{sec:intro}
 
-Let $G=(V,E)$ be a finite simple loopless graph and $\alpha>1$. Each edge $e$ carries a count $N_t(e)$, with
+Let $G=(V,E)$ be a finite simple graph and $\alpha>1$. Each edge $e$ carries a count $N_t(e)$, with
 $N_0(e)\in\{1,2,\dots\}$. Each non-isolated vertex carries an independent Poisson clock of rate one, and when the
 clock of $v$ rings, an edge $e\ni v$ is chosen with probability
 \[
   \frac{N_t(e)^\alpha}{\sum_{f\ni v}N_t(f)^\alpha}
 \]
-and its count is increased by one. This is the WARM model ($W$, $A$-reinforcement model) with equal firing rates and
-power reinforcement. It was introduced, for general
+and its count is increased by one. This is the WARM model with equal firing rates and power reinforcement. It was introduced, for general
 rates and a general reinforcement function, by van der Hofstad, Holmes, Kuznetsov and Ruszel \cite{vdHHKR}, as a
 model for the way neurons select among connections. Write
 \[
@@ -61,92 +60,129 @@ model for the way neurons select among connections. Write
 A \emph{whisker} is a tree of diameter at most three, and a \emph{star} is a tree of diameter at most two (a single
 edge included).
 
+The urn is governed by a flow. For $a=(a_e)_{e\in E}\in[0,\infty)^E$ and a vertex $v$ put
+$S_v(a)=\sum_{f\ni v}a_f^\alpha$. The equal-rate WARM flow is
+\begin{equation}\label{eq:flow}
+  \dot a_e=F_e(a)=-a_e+\sum_{v\in e}\frac{a_e^\alpha}{S_v(a)} ,
+\end{equation}
+on the set where $S_v>0$ at every non-isolated vertex. An \emph{equilibrium} is a zero of $F$. At an equilibrium $a$
+write $\supp a=\{e: a_e>0\}$ for its \emph{support} and, for $e\ni v$,
+\[
+  q_{e,v}=\frac{a_e^\alpha}{S_v(a)}
+\]
+for the \emph{share} of $e$ at $v$. The shares at every vertex meeting the support sum to one, and
+$a_e=q_{e,x}+q_{e,y}$ for every edge $e=xy$ of the support. An equilibrium is \emph{linearly stable} if every
+eigenvalue of its Jacobian $DF(a)$ is negative, \emph{semistable} if no eigenvalue is positive, and \emph{unstable}
+if some eigenvalue is positive.
+
 Van der Hofstad, Holmes, Kuznetsov and Ruszel \cite[Conjecture~2]{vdHHKR} conjectured that for every graph and
 $\alpha$ large enough depending on the graph, the linearly stable equilibria of the associated flow are supported on
-whisker forests. They proved that for the triangle the uniform equilibrium is linearly stable if and only if
+whisker forests. They proved that for the triangle the equilibrium with equal weights is linearly stable if and only if
 $\alpha<4/3$ \cite[Proposition~2(v)]{vdHHKR}, and that for $\alpha>4/3$ every linearly stable equilibrium of the
 triangle has a zero coordinate \cite[Theorem~4(ii)]{vdHHKR}. Holmes and Kleptsyn \cite{HK} proved that for
-$\alpha>2$, with arbitrary positive rates, every equilibrium that is not linearly unstable is supported on a forest
-\cite[Theorem~3, Corollary~1]{HK}, and that with equal rates and $\alpha>25$ each component of the support is a
-whisker \cite[Theorem~2(a)]{HK}, with a threshold independent of the graph. Hirsch, Holmes and Kleptsyn \cite{HHK}
-supplied the stochastic input: the vector $N_t/t$ converges almost surely to an equilibrium whose Jacobian has no
-positive eigenvalue \cite[Theorem~1]{HHK}, and $E_\infty$ is almost surely the positive support of the limit
-\cite[Proposition~1]{HHK}. They also showed that fully supported equilibria on bare paths with at least four edges
-are unstable for $\alpha>2$ \cite[Proposition~9]{HHK}, and that the path with three edges carries no positive
-equilibrium for $1<\alpha<\alpha_*\approx 4.4$ \cite[Proposition~10(i)]{HHK}.
+$\alpha>2$, with arbitrary positive rates, every semistable equilibrium is supported on a forest
+\cite[Theorem~3, Corollary~1]{HK}. With equal rates and $\alpha>25$ they proved that each component of the support
+is a whisker \cite[Theorem~2(a)]{HK}, with a threshold independent of the graph; Kriebel observes that the constants
+in their proof already give $\alpha>24$ \cite[Section~5]{Kr}. Hirsch, Holmes and Kleptsyn \cite{HHK} supplied the
+stochastic input: from unit initial counts the vector $N_t/t$ converges almost surely to a semistable equilibrium,
+and it converges with positive probability to any given linearly stable equilibrium \cite[Theorem~1]{HHK};
+moreover $E_\infty$ is almost surely the support of the limit \cite[Proposition~1]{HHK}. They also showed that on
+a graph that is a path with at least four edges every equilibrium supported on the whole path is unstable for
+$\alpha>2$ \cite[Proposition~9]{HHK}, and that the path with three edges carries no equilibrium supported on all
+three edges for $1<\alpha<\alpha_*$, where $\alpha_*\approx 4.4$ is a constant determined there
+\cite[Proposition~10(i)]{HHK}.
 
 Kleptsyn \cite[Open Problems~1 and 2, p.~655]{Kl} asked to improve the forest threshold $2$ and the whisker
 threshold $25$, and suggested that $4/3$ might be sharp for both; the same two questions are Open Problems~12
 and~13 in the collection of Aletti et al.\ \cite{AOP}. Kriebel \cite{Kr} answered the first: for $\alpha>4/3$ and
-arbitrary positive rates the set $E_\infty$ is almost surely a forest \cite[Theorem~1(1)]{Kr}, the main step being
-the instability of every equilibrium whose support contains an odd cycle of length $m$ when
-$\alpha>\sec^2(\pi/(2m))$ \cite[Theorem~3]{Kr}. For the second he proved the whisker conclusion with equal rates
+arbitrary positive rates the set $E_\infty$ is almost surely a forest \cite[Theorem~1(1)]{Kr}. The main step is
+that an equilibrium whose support contains an even cycle is unstable for every $\alpha>1$, and one whose support
+contains an odd cycle of length $m$ is unstable when $\alpha>\sec^2(\pi/(2m))$ \cite[Theorem~3]{Kr}; the even case
+is the alternating perturbation of \cite[Lemma~2]{HHK}. For the second he proved the whisker conclusion with equal rates
 for $\alpha\ge 17/4$ \cite[Theorem~1(2)]{Kr}, leaving the interval $4/3<\alpha<17/4$ open.
 
 Our main theorem closes that interval.
 
 \begin{theorem}\label{thm:main}
-Let $G$ be a finite simple loopless graph with equal firing rates and positive integer initial counts, and let
+Let $G$ be a finite simple graph with equal firing rates and positive integer initial counts, and let
 $\alpha>4/3$. Then almost surely every component of $(V,E_\infty)$ with at least one edge is a whisker. If moreover
 $\alpha\le 2$, then almost surely every such component is a star.
 \end{theorem}
 
-The constant $4/3$ is best possible. For $1<\alpha<4/3$ the uniform equilibrium of the triangle is strictly linearly
-stable \cite[Proposition~2(v)]{vdHHKR}, and by \cite[Theorem~1]{HHK} the urn converges to it with positive
-probability, so all three edges of the triangle survive with positive probability; this is the observation behind
-the suggestion in \cite{Kl,AOP}. At $\alpha=4/3$ the question remains open, since the uniform triangle equilibrium
-is then critical. Stars do occur on $(4/3,2]$: the symmetric $k$-edge star, with all weights $(k+1)/k$, is an equilibrium
-\cite[Section~3.1]{vdHHKR}, and \Cref{lem:Q} below gives
-$Q(u)=\bigl(\frac{\alpha-1}{k}-1\bigr)\sum_e u_e^2-\frac{\alpha}{k^2}\bigl(\sum_e u_e\bigr)^2$, which is negative for
-$u\ne 0$ when $\alpha\le 2$ (for $k=1$ it equals $-2u_e^2$), so the Jacobian has only negative eigenvalues.
+The constant $4/3$ is best possible. For $1<\alpha<4/3$ the equilibrium of the triangle with equal weights is
+linearly stable \cite[Proposition~2(v)]{vdHHKR}, so by \cite[Theorem~1]{HHK} the urn started from unit counts
+converges to it with positive probability, and all three edges of the triangle survive with positive probability
+\cite[Theorem~1]{Kr}; this is the observation behind the suggestion in \cite{Kl,AOP}. At $\alpha=4/3$ that
+equilibrium has eigenvalues $-1,0,0$, and the question remains open. Stars do occur for $4/3<\alpha\le 2$: on the
+star with $k$ edges the equilibrium with equal weights is linearly stable (\Cref{rem:star}), so it is the limit with
+positive probability.
 
-\Cref{thm:main} follows from the following deterministic statement about equilibria, which we prove in
-\Cref{sec:large,sec:small}, together with the stochastic theorems above (\Cref{sec:stoch}).
+\Cref{thm:main} is a consequence of the stochastic theorems above and of the deterministic statement below, which
+is proved in \Cref{sec:large,sec:small}; the deduction is in \Cref{sec:stoch}.
 
 \begin{theorem}\label{thm:det}
-Consider the equal-rate WARM flow on a finite simple graph and an equilibrium whose Jacobian has no positive
-eigenvalue.
+Consider the equal-rate WARM flow \eqref{eq:flow} on a finite simple graph.
 \begin{enumerate}[label=(\alph*)]
-\item If $\alpha>2$, every component of the positive support is a whisker.
-\item If $4/3\le\alpha\le 2$, every component of the positive support that is a tree is a star.
-\item If $1<\alpha\le 2$, no equilibrium, stable or not, has a support component that is a tree of diameter three.
+\item If $\alpha>2$, every component of the support of a semistable equilibrium is a whisker.
+\item If $4/3\le\alpha\le 2$, every component of the support of a semistable equilibrium that is a tree is a star.
+\item If $1<\alpha\le 2$, no equilibrium has a support component that is a tree of diameter three.
 \end{enumerate}
 \end{theorem}
 
-For $\alpha\ge 17/4$, part~(a) is Kriebel's \cite[Sections~4.1--4.3]{Kr}, and we prove it for $2<\alpha\le 6$. Part~(c)
-extends \cite[Proposition~10(i)]{HHK} from the bare three-edge path to all trees of diameter three, on the
-smaller range $\alpha\le 2$. In part~(b) the support is a forest by Kriebel's theorem \cite[Theorem~3]{Kr}; part~(b)
-is where $4/3$ enters a second time, through \Cref{lem:A} below.
+For $\alpha>2$ the argument rests on the diagonal condition of Holmes and Kleptsyn \cite[Proposition~1]{HK}: at a
+semistable equilibrium every edge $e=xy$ of the support satisfies $\max(q_{e,x},q_{e,y})\ge 1-1/\alpha$. Then
+$1-1/\alpha>1/2$, so a vertex holds a share at least $1-1/\alpha$ of at most one edge, and in a tree component
+either one edge has such a share at both endpoints and every other edge has it at the endpoint farther from that
+edge, or one vertex $r$ has it for no edge and every edge has it at the endpoint farther from $r$
+(\Cref{lem:count}). If an edge $e=xy$ has $q_{e,x}\le 1/\alpha$ and $q_{e,y}\ge 1-1/\alpha$, then $y$ is a leaf of
+the support (\Cref{lem:depth}). If $\alpha\le 6$, $e=ry$ has $q_{e,y}\ge 1-1/\alpha$, and $y$ is adjacent to a leaf,
+then $q_{e,r}>1/2$ (\Cref{lem:branch}). Part~(a) for $2<\alpha\le 6$ follows from these three statements. Kriebel's
+proof for $\alpha\ge 17/4$ \cite[Section~4]{Kr} is different: it shows that an edge neither of whose endpoints is a
+leaf of the support has weight greater than $3/2$, so that such edges form a matching, by bounding its two shares
+through one competing edge of weight at least one at each endpoint, and this bound is carried out on $[17/4,7]$ by
+exact interval estimates. \Cref{lem:depth,lem:branch} bound no weight. They use the equilibrium relation
+$q_{f,v}/q_{e,v}=(a_f/a_e)^\alpha$ at the endpoint $v$ where $e$ has the larger share, with $a_f>1$, or with
+$a_f=1+q_{f,v}$ when $f$ ends at a leaf, to bound the share of $e$ at its other endpoint. \Cref{lem:count} is a
+counting consequence of the fact, due to Holmes and Kleptsyn, that for $\alpha>2$ every support edge is the champion
+of one of its endpoints \cite[Theorem~4]{HK}.
 
-The two arguments are different in kind. For $\alpha>2$ the diagonal condition of Holmes and Kleptsyn
-\cite[Proposition~1]{HK} says that every edge of the support takes a share at least $1-1/\alpha>1/2$ of the
-reinforcement at one of its endpoints. Since no vertex can give more than half to two edges, counting these
-endpoints on a tree forces one of two rigid orientations (\Cref{lem:count}). A monotonicity estimate then forbids
-long chains (\Cref{lem:depth}), and a polynomial inequality with positive Bernstein coefficients forbids two long
-branches (\Cref{lem:branch}). The approach refines the least-weight and champion arguments of \cite{HK}. For
-$\alpha\le 2$ the counting breaks down, because $1-1/\alpha\le 1/2$. Here we use the Lyapunov function of
-\cite[(A.4)]{vdHHKR}, in the gradient form of \cite[Section~2.2]{HK}, and evaluate its Hessian on a test vector
-supported on a path. The increments alternate in sign so that the vertex averages vanish at every inner vertex of the
-path. This is the open-chain version of the alternating perturbation around even cycles in
-\cite[Lemma~2]{HHK}; on a path, unlike a cycle, two end terms remain, and \Cref{lem:A,lem:B} show that both are
-positive when the path runs between two edges next to leaves.
+For $\alpha\le 2$ the bound $1-1/\alpha$ is at most $1/2$, a vertex can hold such a share of two edges, and the
+diagonal condition no longer orients the edges of a tree. By the Lyapunov function of \cite[(A.4)]{vdHHKR}, in the
+form of \cite[Section~2.2]{HK}, an equilibrium $a$ is unstable as soon as
+\[
+  Q(u)=\sum_v\Bigl[(\alpha-1)\sum_{e\ni v}q_{e,v}u_e^2-\alpha\Bigl(\sum_{e\ni v}q_{e,v}u_e\Bigr)^2\Bigr]>0
+\]
+for some vector $u$ on the support (\Cref{lem:Q}); the diagonal condition is the case in which $u$ is the indicator
+of one edge. We take a path $y_0y_1\cdots y_{k+1}$ in a tree component, with edges $g_i=y_{i-1}y_i$, and the vector
+$u$ that vanishes off the path and satisfies $u_{g_1}=1$ and $q_{g_i,y_i}u_{g_i}+q_{g_{i+1},y_i}u_{g_{i+1}}=0$ for
+$1\le i\le k$. The negative terms of $Q$ then vanish at $y_1,\dots,y_k$, and
+\[
+  Q(u)=(\alpha-1)\sum_{i=2}^{k}a_{g_i}u_{g_i}^2
+  +u_{g_1}^2\bigl[(\alpha-1)a_{g_1}-\alpha q_{g_1,y_0}^2\bigr]
+  +u_{g_{k+1}}^2\bigl[(\alpha-1)a_{g_{k+1}}-\alpha q_{g_{k+1},y_{k+1}}^2\bigr]
+\]
+(\Cref{lem:path}). This is the alternating perturbation of \cite[Lemma~2]{HHK} on a path instead of an even cycle;
+on a cycle there are no end terms. Suppose that $y_0$ is adjacent to a leaf, and put $p=q_{g_1,y_0}$,
+$s=q_{g_1,y_1}$. The equilibrium equations give $p<1/2$ when $\alpha\le 2$ (\Cref{lem:B}) and then $s>p$
+(\Cref{lem:A}), so for $\alpha\ge 4/3$
+\[
+  (\alpha-1)a_{g_1}-\alpha p^2=(\alpha-1)(p+s)-\alpha p^2>2(\alpha-1)p-\alpha p^2\ \ge\ \alpha p\Bigl(\frac12-p\Bigr)\ \ge\ 0 ,
+\]
+where $2(\alpha-1)\ge\alpha/2$ is the condition $\alpha\ge 4/3$. In a tree of diameter three the middle edge has a
+leaf adjacent to each endpoint, and the inequality $s>p$, applied from both sides, contradicts itself; this is
+part~(c), which extends \cite[Proposition~10(i)]{HHK} from the path with three edges to all trees of diameter three,
+on the smaller range $\alpha\le 2$. In a tree of diameter at least four a longest path, with its two end edges
+removed, is a path of this kind at both ends, so $Q(u)>0$ and the equilibrium is unstable; this is part~(b). For
+$\alpha>4/3$ the tree hypothesis of part~(b) holds for every component, since the support of a semistable
+equilibrium is then a forest \cite[Theorem~3]{Kr}.
+
+For $2<\alpha\le 6$ the proof of \Cref{thm:det}(a) uses only \cite{HK}. For $6<\alpha\le 25$ the whisker conclusion
+rests on \cite{Kr} alone, and for $4/3<\alpha\le 2$ so does the forest property of the support; the passage from unit
+initial counts to arbitrary ones is \cite[Lemma~2]{Kr}.
 
 \section{Equilibria and the Hessian form}\label{sec:prelim}
 
-We write $a=(a_e)_{e\in E}\in[0,\infty)^E$ and, for a vertex $v$, $S_v(a)=\sum_{f\ni v}a_f^\alpha$. The equal-rate
-WARM flow is
-\begin{equation}\label{eq:flow}
-  \dot a_e=F_e(a)=-a_e+\sum_{v\in e}\frac{a_e^\alpha}{S_v(a)} ,
-\end{equation}
-on the set where $S_v>0$ at every non-isolated vertex. At an equilibrium $a$ write $\supp a=\{e: a_e>0\}$ and, for
-$e\ni v$,
-\[
-  q_{e,v}=\frac{a_e^\alpha}{S_v(a)} .
-\]
-Then $\sum_{e\ni v}q_{e,v}=1$ at every vertex meeting the support, and $a_e=q_{e,x}+q_{e,y}$ for every edge $e=xy$
-of the support. We call the equilibrium \emph{stable} if its Jacobian $DF(a)$ has no positive eigenvalue. This
-includes critical equilibria, as in \cite[Theorem~1]{HHK}.
-
+Let $a$ be an equilibrium of \eqref{eq:flow}, with support $\supp a$ and shares $q_{e,v}$ as in the introduction.
 For $e\notin\supp a$ and $\alpha>1$ we have $\partial F_e/\partial a_f(a)=-\delta_{ef}$ for every edge $f$, because
 $a_e^{\alpha-1}=0$. Hence the eigenvalues of $DF(a)$ are $-1$ together with those of the block $J$ indexed by
 $\supp a$, and the coordinates outside the support do not enter $J$. On $(0,\infty)^{\supp a}$ put
@@ -158,12 +194,15 @@ on the support, so $J=\diag(a)\,H$ with $H$ the Hessian of $L$. Since $J$ is sim
 $\diag(a)^{1/2}H\diag(a)^{1/2}$, its eigenvalues are real, and by Sylvester's law of inertia $J$ has a positive
 eigenvalue as soon as $H$ has a positive direction (compare \cite[Corollary~5]{HK}).
 
+The next formula is the Hessian of \cite[Section~2.2]{HK} (compare \cite[Section~3]{Kr}) written in the variables
+$u_e=w_e/a_e$.
+
 \begin{lemma}\label{lem:Q}
 At an equilibrium, for $u\in\mathbb R^{\supp a}$ and $w_e=a_eu_e$,
 \[
   \langle w,Hw\rangle=Q(u):=\sum_v\Bigl[(\alpha-1)\sum_{e\ni v}q_{e,v}u_e^2-\alpha\Bigl(\sum_{e\ni v}q_{e,v}u_e\Bigr)^2\Bigr],
 \]
-the sums running over edges of the support. In particular, if $Q(u)>0$ for some $u$, the equilibrium is not stable.
+the sums running over edges of the support. In particular, if $Q(u)>0$ for some $u$, the equilibrium is unstable.
 \end{lemma}
 
 \begin{proof}
@@ -175,7 +214,7 @@ Differentiating $\partial_eL=-1+\sum_{v\in e}a_e^{\alpha-1}/S_v$ gives
 and substituting $w_e=a_eu_e$ gives the formula.
 \end{proof}
 
-For an edge $e=xy$ of the support of a stable equilibrium, taking for the test vector the indicator of $e$ gives
+For an edge $e=xy$ of the support of a semistable equilibrium, taking for the test vector the indicator of $e$ gives
 $Q\le 0$, that is,
 \begin{equation}\label{eq:diag}
   q_{e,x}^2+q_{e,y}^2\ \ge\ \Bigl(1-\frac1\alpha\Bigr)\bigl(q_{e,x}+q_{e,y}\bigr),
@@ -183,17 +222,25 @@ $Q\le 0$, that is,
 the diagonal condition of Holmes and Kleptsyn \cite[Proposition~1]{HK}; see also \cite[(5)]{Kr}. In particular
 $\max(q_{e,x},q_{e,y})\ge 1-1/\alpha$.
 
-The positive support splits into components, and the restriction of a stable equilibrium to one component $C$
-satisfies the equilibrium equations on $C$, with $\sum_{e\in C}a_e$ equal to the number of vertices of $C$; a test
-vector supported in $C$ sees only $C$. All arguments below are therefore made on one component.
+\begin{remark}\label{rem:star}
+On the star with $k$ edges the equilibrium with equal weights has all weights $(k+1)/k$ \cite[Section~3.1]{vdHHKR}.
+Its centre gives each edge the share $1/k$ and each leaf gives its edge the share $1$, so
+$Q(u)=\bigl(\frac{\alpha-1}{k}-1\bigr)\sum_e u_e^2-\frac{\alpha}{k^2}\bigl(\sum_e u_e\bigr)^2$. For $k\ge 2$ and
+$\alpha\le 2$ the first coefficient is at most $-1/2$, and for $k=1$ the form equals $-2u_e^2$; in both cases $Q(u)<0$
+for $u\ne 0$, so by \Cref{lem:Q} and the inertia argument above the equilibrium is linearly stable.
+\end{remark}
+
+The support splits into components, and the restriction of an equilibrium to one component $C$ satisfies the
+equilibrium equations on $C$, with $\sum_{e\in C}a_e$ equal to the number of vertices of $C$; a test vector
+supported in $C$ sees only $C$. It therefore suffices to consider one component.
 
 \section{\texorpdfstring{The range $\alpha>2$}{The range alpha > 2}}\label{sec:large}
 
-Throughout this section $\alpha>2$, the equilibrium is stable, and $h=1-1/\alpha\in(1/2,1)$. We say that the
+Throughout this section $\alpha>2$, the equilibrium is semistable, and $h=1-1/\alpha\in(1/2,1)$. We say that the
 incidence $(e,v)$ is \emph{high} if $q_{e,v}\ge h$. By \eqref{eq:diag} every support edge has a high endpoint, and
 since $h>1/2$ and $\sum_{e\ni v}q_{e,v}=1$, no vertex is high for two edges.
 
-The following two facts are due to Holmes and Kleptsyn.
+The following two facts are due to Holmes and Kleptsyn; we include the short proof for equal rates.
 
 \begin{lemma}[{\cite[Theorem~3, Lemma~4]{HK}; see also \cite[Lemma~4]{Kr}}]\label{lem:hk}
 Let $\alpha>2$. Every component of the support is a tree, and every support edge has weight $a_e>1$.
@@ -203,7 +250,7 @@ Let $\alpha>2$. Every component of the support is a tree, and every support edge
 If a component contains a cycle, let $e=uw$ be an edge of least weight on it. Both $u$ and $w$ carry another cycle
 edge of weight at least $a_e$, so $q_{e,u},q_{e,w}\le 1/2<h$, contradicting \eqref{eq:diag}. In a tree component
 with at least two edges, the same argument shows that an edge of least weight has a leaf endpoint, where its
-incidence is $1$; its other incidence is positive, so its weight exceeds one, and so does every weight in the
+share is $1$; its other share is positive, so its weight exceeds one, and so does every weight in the
 component. A component with one edge has weight $2$.
 \end{proof}
 
@@ -277,24 +324,26 @@ all positive, so $P>0$ on $[0,1/2]$.
 \end{proof}
 
 \begin{proof}[Proof of \Cref{thm:det}(a)]
-For $\alpha\ge 17/4$ this is \cite[Sections~4.1--4.3]{Kr}. Let $2<\alpha\le 6$ and let $T$ be a component of the
+For $\alpha\ge 17/4$ this is \cite[Theorem~1(2) and Section~4]{Kr}. Let $2<\alpha\le 6$ and let $T$ be a component of the
 support; it is a tree by \Cref{lem:hk}. In case~(I) of \Cref{lem:count}, let $e_0=xx'$ be the doubly high edge. Any
 other edge $f=xz$ at $x$ has $q_{f,x}\le 1-h=1/\alpha$ and is high at $z$, so $z$ is a leaf by \Cref{lem:depth}; the
 same holds at $x'$, and $T$ has diameter at most three. In case~(II), root $T$ at $r$. An edge $vz$ with $v$ at depth
 one and $z$ at depth two is high at $z$, and $q_{vz,v}\le 1/\alpha$ because $v$ is high for the edge $rv$; so $z$ is a
 leaf by \Cref{lem:depth}, and $T$ has height at most two. If a depth-one vertex $v$ has a child, the edge $e=rv$
-satisfies the hypotheses of \Cref{lem:branch}, so $q_{e,r}>1/2$. Since the incidences at $r$ sum to one, at most one
+satisfies the hypotheses of \Cref{lem:branch}, so $q_{e,r}>1/2$. Since the shares at $r$ sum to one, at most one
 depth-one vertex has children, and $T$ has diameter at most three.
 \end{proof}
 
 \begin{remark}
-The margin in \Cref{lem:branch} disappears near $\alpha=9$: at $\alpha=9$ and $t=1/12$ the lower bound is below
-$1/2$: it equals $-\frac{11}{12}+\frac{13}{12}\,11^{1/9}$, and $11\cdot 13^9<17^9$. This is why the range $\alpha>6$ is taken from \cite{Kr}.
+The bound of \Cref{lem:branch} fails near $\alpha=9$. At $\alpha=9$ and $t=1/12$ the lower bound for $\lambda$
+equals $-\frac{11}{12}+\frac{13}{12}\,11^{1/9}$, which is below $1/2$ because $11\cdot 13^9<17^9$.
 \end{remark}
 
 \section{\texorpdfstring{The range $1<\alpha\le 2$}{The range 1 < alpha <= 2}}\label{sec:small}
 
-In this section the equilibrium is supported on a tree component $T$, and for an edge $e=vx$ of $T$ we put
+In this section $T$ is a component of the support of an equilibrium that is a tree. \Cref{lem:B,lem:A,lem:path}
+hold for every equilibrium; only \Cref{cor:facing} assumes that the equilibrium is semistable. For an edge $e=vx$ of
+$T$ we put
 \[
   d_e(v)=(\alpha-1)\,a_e-\alpha\,q_{e,x}^2 .
 \]
@@ -307,7 +356,8 @@ Then $q_{l,y}=1$, so $a_l=1+q$; also $a_e=p+s$, $p/q=(a_e/a_l)^\alpha$, $p+q\le 
 another support edge.
 
 \begin{lemma}\label{lem:B}
-If $1<\alpha\le 2$, then $p<1/2$.
+Let $e=cx$ be an edge of $T$ such that $c$ has another support edge and $x$ is adjacent to a leaf $y$ of $T$, and
+let $p=q_{e,x}$. If $1<\alpha\le 2$, then $p<1/2$.
 \end{lemma}
 
 \begin{proof}
@@ -325,7 +375,8 @@ $(2-p)^2p-(1+p)^2(1-p)=(2p-1)(p^2-p+1)\ge 0$, so $p+s\ge 1+p$, that is, $s\ge 1$
 \end{proof}
 
 \begin{lemma}\label{lem:A}
-If $\alpha>1$ and $p\le 1/2$, then $s>p$. If moreover $\alpha\ge 4/3$, then $d_e(c)>0$.
+Let $e=cx$ and $y$ be as in \Cref{lem:B}, $p=q_{e,x}$ and $s=q_{e,c}$. If $\alpha>1$ and $p\le 1/2$, then $s>p$. If moreover
+$\alpha\ge 4/3$, then $d_e(c)>0$.
 \end{lemma}
 
 \begin{proof}
@@ -335,17 +386,18 @@ If $s\le p$, then $a_e=p+s\le 2p\le 1<a_l$, so $a_e/a_l<1$ and, since $\alpha>1$
 \]
 which gives $q>1$, impossible. Hence $s>p$, and for $\alpha\ge 4/3$
 \[
-  d_e(c)=(\alpha-1)(p+s)-\alpha p^2>2(\alpha-1)p\ \ge\ \frac\alpha2\,p\ \ge\ \alpha p^2,
+  (\alpha-1)(p+s)>2(\alpha-1)p\ \ge\ \frac\alpha2\,p\ \ge\ \alpha p^2,\qquad\text{hence}\qquad
+  d_e(c)=(\alpha-1)(p+s)-\alpha p^2>0,
 \]
 where the middle inequality is $4(\alpha-1)\ge\alpha$ and the last one uses $p\le 1/2$.
 \end{proof}
 
-The next lemma holds for every $\alpha>1$. The test vector is supported on a path, and its increments alternate so
-that the weighted average $\sum_{e\ni v}q_{e,v}u_e$ vanishes at each inner vertex; compare the alternating
-perturbation around even cycles in \cite[Lemma~2]{HHK}.
+The test vector of the next lemma is supported on a path, and its entries alternate in sign so that the weighted
+average $\sum_{e\ni v}q_{e,v}u_e$ vanishes at each inner vertex; compare the alternating perturbation around even
+cycles in \cite[Lemma~2]{HHK}.
 
 \begin{lemma}\label{lem:path}
-Let $y_0y_1\cdots y_{k+1}$ be a path in $T$ with $k\ge 1$ and edges $g_i=y_{i-1}y_i$, $1\le i\le k+1$. Put
+Let $\alpha>1$. Let $y_0y_1\cdots y_{k+1}$ be a path in $T$ with $k\ge 1$ and edges $g_i=y_{i-1}y_i$, $1\le i\le k+1$. Put
 $u_{g_1}=1$, $u_{g_{i+1}}=-u_{g_i}\,q_{g_i,y_i}/q_{g_{i+1},y_i}$ for $1\le i\le k$, and $u=0$ on the other edges.
 Then
 \[
@@ -365,7 +417,7 @@ for $g_{k+1}$. The vertices of the path are distinct because $T$ is a tree.
 \end{proof}
 
 \begin{corollary}\label{cor:facing}
-At a stable equilibrium there are no two distinct edges $g=xv$ and $g'=v'x'$ of $T$ with $d_g(v)>0$ and
+At a semistable equilibrium there are no two distinct edges $g=xv$ and $g'=v'x'$ of $T$ with $d_g(v)>0$ and
 $d_{g'}(v')>0$ such that the path in $T$ from $x$ to $x'$ begins with $g$ and ends with $g'$ ($v=v'$ is allowed).
 \end{corollary}
 
@@ -378,7 +430,7 @@ Apply \Cref{lem:path} to the path from $x$ to $x'$: every term is nonnegative, t
 Let $x_1x_2x_3x_4$ be a longest path in a tree component of diameter three. Then $x_1,x_4$ are leaves and the edge
 $e=x_2x_3$ has non-leaf endpoints, each with a leaf neighbour. Applying \Cref{lem:B,lem:A} with $c=x_3$, $x=x_2$
 gives $q_{e,x_3}>q_{e,x_2}$, and applying them with $c=x_2$, $x=x_3$ gives the reverse inequality. Hence no
-equilibrium has such a component. Stability was not used.
+equilibrium has such a component.
 \end{proof}
 
 \begin{proof}[Proof of \Cref{thm:det}(b)]
@@ -387,7 +439,7 @@ Suppose $D\ge 4$ and let $x_1x_2\cdots x_{D+1}$ be a longest path. Its endpoints
 have degree at least two in $T$. \Cref{lem:B,lem:A} applied to $e=x_3x_2$ (with $c=x_3$, $x=x_2$ and leaf $x_1$)
 give $d_e(x_3)>0$, and applied to $e'=x_{D-1}x_D$ (with $c=x_{D-1}$, $x=x_D$ and leaf $x_{D+1}$) give
 $d_{e'}(x_{D-1})>0$. As $D\ge 4$ these edges are distinct, and the path $x_2x_3\cdots x_{D-1}x_D$ begins with $e$
-and ends with $e'$. \Cref{cor:facing} shows that the equilibrium is not stable. Hence $D\le 2$.
+and ends with $e'$. \Cref{cor:facing} shows that the equilibrium is not semistable. Hence $D\le 2$.
 \end{proof}
 
 \begin{example}
@@ -397,29 +449,26 @@ $B=(5-\sqrt5)/4$. This is a positive equilibrium. The test vector of \Cref{lem:p
 \end{example}
 
 \begin{remark}
-\Cref{lem:A} is the only place in this section where a lower bound on $\alpha$ beyond $\alpha>1$ is used, and it
-needs only $\alpha\ge 4/3$; \Cref{lem:B} is the only place where $\alpha\le 2$ is used. Hence \Cref{thm:det}(b) holds
-for $4/3\le\alpha\le 2$. The stochastic statement at $\alpha=4/3$ fails to follow only because the forest theorem does not
-extend there: the uniform triangle equilibrium has eigenvalues $-1,0,0$ at $\alpha=4/3$.
+At $\alpha=4/3$ the stochastic statement does not follow from \Cref{thm:det}(b), because the support of a semistable
+equilibrium need not be a forest there: the triangle equilibrium with equal weights has eigenvalues $-1,0,0$.
 \end{remark}
 
 \section{Proof of the main theorem}\label{sec:stoch}
 
-Start from unit counts. By \cite[Theorem~1]{HHK}, applied to the finite graph $G$ with unit rates, $N_t/t$ converges
-almost surely to an equilibrium $a$ of \eqref{eq:flow} whose Jacobian has no positive eigenvalue, and by
+Suppose first that all initial counts equal one. By \cite[Theorem~1]{HHK}, applied to the finite graph $G$ with
+unit rates, $N_t/t$ converges almost surely to a semistable equilibrium $a$ of \eqref{eq:flow}, and by
 \cite[Proposition~1]{HHK}, whose bounded-rate and bounded-degree hypotheses hold on a finite graph,
 $E_\infty=\supp a$ almost surely. Kriebel's Lemma~2 \cite{Kr} transfers these almost-sure conclusions to any fixed
 positive integer initial counts: a prescribed finite sequence of firings and choices leads from unit counts to the
 given counts with positive probability, and the future process then has the law started from those counts.
 
 If $\alpha>2$, every component of $\supp a$ is a whisker by \Cref{thm:det}(a). If $4/3<\alpha\le 2$, the support of
-an equilibrium with no positive eigenvalue is a forest by \cite[Theorem~3]{Kr} (an even support cycle is unstable for
-every $\alpha>1$, and an odd one of length $m\ge 3$ for $\alpha>\sec^2(\pi/(2m))$, and $\sec^2(\pi/(2m))\le 4/3$),
-so every component is a tree and hence a star by \Cref{thm:det}(b). \qed
+a semistable equilibrium is a forest by \cite[Theorem~3]{Kr}, since $\sec^2(\pi/(2m))\le 4/3$ for every odd
+$m\ge 3$. So every component is a tree, and hence a star by \Cref{thm:det}(b). \qed
 
 \begin{remark}
-Two questions remain: the case $\alpha=4/3$, and whether $4/3$ is also the whisker threshold for unequal rates.
-\Cref{lem:count,lem:depth,lem:branch,lem:A,lem:B} use equal rates through the normalization
+The case $\alpha=4/3$ remains open. With unequal rates the whisker conclusion is false in general
+\cite[Example~1]{HK}. \Cref{lem:count,lem:depth,lem:branch,lem:A,lem:B} use equal rates through the normalization
 $\sum_{e\ni v}q_{e,v}=1$ with a common constant at every vertex and through $a_l=1+q$ at a leaf edge.
 \end{remark}
 
@@ -453,7 +502,7 @@ the work and is responsible for the content of the paper and for decisions conce
 
 A SymPy script that recomputes the Bernstein coefficients of \Cref{lem:branch}, the factorization in the proof of
 \Cref{lem:B}, the derivative in the proof of \Cref{lem:depth} and the example in \Cref{sec:small} is available at
-\url{https://github.com/yspennstate/warm-whisker-threshold} (release v1.0).
+\url{https://github.com/yspennstate/warm-whisker-threshold/tree/v1.0}.
 
 \appendix
 \section{Notation}
@@ -462,17 +511,19 @@ A SymPy script that recomputes the Bernstein coefficients of \Cref{lem:branch}, 
 \small
 \begin{tabular}{lll}
 Symbol & Meaning & First use\\[2pt]
-$G=(V,E)$ & finite simple loopless graph & \Cref{sec:intro}\\
+$G=(V,E)$ & finite simple graph & \Cref{sec:intro}\\
 $\alpha$ & reinforcement exponent, $\alpha>1$ & \Cref{sec:intro}\\
 $N_t(e)$ & count of edge $e$ at time $t$ & \Cref{sec:intro}\\
 $E_\infty$ & edges whose counts tend to infinity & \Cref{sec:intro}\\
-$a=(a_e)$ & point of $[0,\infty)^E$; an equilibrium & \Cref{sec:prelim}\\
-$S_v(a)$ & $\sum_{f\ni v}a_f^\alpha$ & \Cref{sec:prelim}\\
-$F$ & vector field of the flow \eqref{eq:flow} & \Cref{sec:prelim}\\
-$\supp a$ & positive support $\{e:a_e>0\}$ & \Cref{sec:prelim}\\
-$q_{e,v}$ & share $a_e^\alpha/S_v(a)$ of edge $e$ at vertex $v$ & \Cref{sec:prelim}\\
-$DF(a)$, $J$ & Jacobian and its block on $\supp a$ & \Cref{sec:prelim}\\
+$a=(a_e)$ & point of $[0,\infty)^E$; an equilibrium & \Cref{sec:intro}\\
+$S_v(a)$ & $\sum_{f\ni v}a_f^\alpha$ & \Cref{sec:intro}\\
+$F$ & vector field of the flow \eqref{eq:flow} & \Cref{sec:intro}\\
+$\supp a$ & support $\{e:a_e>0\}$ & \Cref{sec:intro}\\
+$q_{e,v}$ & share $a_e^\alpha/S_v(a)$ of edge $e$ at vertex $v$ & \Cref{sec:intro}\\
+$DF(a)$ & Jacobian; linearly stable, semistable, unstable & \Cref{sec:intro}\\
+$J$ & block of $DF(a)$ on $\supp a$ & \Cref{sec:prelim}\\
 $L$, $H$ & Lyapunov function and its Hessian & \Cref{sec:prelim}\\
+$u$, $w$ & test vector and $w_e=a_eu_e$ & \Cref{lem:Q}\\
 $Q(u)$ & Hessian form in the variables $u_e=w_e/a_e$ & \Cref{lem:Q}\\
 $h$ & $1-1/\alpha$, threshold for a high incidence & \Cref{sec:large}\\
 $\eta$ & number of high incidences of a tree component & \Cref{lem:count}\\
@@ -506,7 +557,7 @@ Chaos \textbf{27} (2017), 043104.
 \bibitem{Kl}
 V.~Kleptsyn,
 \emph{Graph-based interacting P\'olya urns},
-Oberwolfach Reports \textbf{20} (2023), no.~12, 653--655.
+Oberwolfach Reports \textbf{20} (2023), Report No.~12/2023, 653--655.
 \doi{10.4171/OWR/2023/12}
 
 \bibitem{Kr}
