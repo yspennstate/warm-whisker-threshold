@@ -60,9 +60,8 @@ model for the way neurons select among connections. Write
 A \emph{whisker} is a tree of diameter at most three, and a \emph{star} is a tree of diameter at most two (a single
 edge included).
 
-The process is governed by a flow. For $a=(a_e)_{e\in E}\in[0,\infty)^E$, the \emph{weight} of $e$ being
-$a_e$, and a vertex $v$ put
-$S_v(a)=\sum_{f\ni v}a_f^\alpha$. The equal-rate WARM flow is
+The process is governed by a flow. A vector $a=(a_e)_{e\in E}\in[0,\infty)^E$ gives each edge $e$ a
+\emph{weight} $a_e$; for a vertex $v$ put $S_v(a)=\sum_{f\ni v}a_f^\alpha$. The equal-rate WARM flow is
 \begin{equation}\label{eq:flow}
   \dot a_e=F_e(a)=-a_e+\sum_{v\in e}\frac{a_e^\alpha}{S_v(a)} ,
 \end{equation}
@@ -75,6 +74,46 @@ for the \emph{share} of $e$ at $v$. The shares at every vertex meeting the suppo
 $a_e=q_{e,x}+q_{e,y}$ for every edge $e=xy$ of the support. An equilibrium is \emph{linearly stable} if every
 eigenvalue of its Jacobian $DF(a)$ is negative, \emph{semistable} if no eigenvalue is positive, and \emph{unstable}
 if some eigenvalue is positive.
+
+Holmes and Kleptsyn \cite[Theorem~2(a)]{HK} proved that with equal rates and $\alpha>25$ every component of the
+support of a semistable equilibrium is a whisker. By the convergence theorem of Hirsch, Holmes and Kleptsyn
+\cite{HHK} and \cite[Lemma~2]{Kr}, the set $E_\infty$ is almost surely the support of a semistable equilibrium,
+so for $\alpha>25$ almost surely every component of $(V,E_\infty)$ is a whisker. Kriebel \cite[Theorem~1]{Kr}
+proved that almost surely $(V,E_\infty)$ is a forest when $\alpha>4/3$, for arbitrary positive rates, and that
+with equal rates almost surely every component is a whisker when $\alpha\ge 17/4$; for $\alpha>4/3$ the support
+of a semistable equilibrium is a forest \cite[Theorem~3]{Kr}. We prove that with equal rates and $\alpha>4/3$
+every component of the support of a semistable equilibrium is a whisker, and a star when $\alpha\le 2$.
+
+For $\alpha>2$ the argument rests on the diagonal condition of Holmes and Kleptsyn \cite[Proposition~1]{HK}: at
+a semistable equilibrium every edge $e=xy$ of the support satisfies
+$q_{e,x}^2+q_{e,y}^2\ge(1-1/\alpha)(q_{e,x}+q_{e,y})$, and so $\max(q_{e,x},q_{e,y})\ge 1-1/\alpha$. Since
+$1-1/\alpha>1/2$, a vertex holds a share at least $1-1/\alpha$ of at most one edge, and this orients the edges
+of a tree component. For $2<\alpha\le 6$ we combine the orientation with the relation
+$q_{f,v}/q_{e,v}=(a_f/a_e)^\alpha$ between two edges $e,f$ of the support at a common vertex $v$, which bounds
+the share of $e$ at its other endpoint; the proof of \cite[Section~4]{Kr} bounds weights instead. For
+$\alpha\le 2$ the bound $1-1/\alpha$ is at most $1/2$, a vertex can hold such a share of two edges, and the
+orientation is lost. By the Lyapunov function of \cite{vdHHKR}, in the form of \cite[Lemmas~1 and~2]{HK}, an
+equilibrium is unstable as soon as
+\[
+  Q(u)=\sum_v\Bigl[(\alpha-1)\sum_{e\ni v}q_{e,v}u_e^2-\alpha\Bigl(\sum_{e\ni v}q_{e,v}u_e\Bigr)^2\Bigr]>0
+\]
+for some vector $u$ on the support (\Cref{lem:Q}); the diagonal condition is the inequality $Q(u)\le 0$ for the
+indicator $u$ of one edge. We evaluate $Q$ on a vector $u$ supported on a path $y_0y_1\cdots y_{k+1}$
+of a tree component, with edges $g_i=y_{i-1}y_i$, $u_{g_1}=1$ and
+$q_{g_i,y_i}u_{g_i}+q_{g_{i+1},y_i}u_{g_{i+1}}=0$ for $1\le i\le k$. The negative terms of $Q(u)$ then vanish at
+$y_1,\dots,y_k$; each edge $g_i$ with $2\le i\le k$ contributes $(\alpha-1)a_{g_i}u_{g_i}^2$, the edge $g_1$
+contributes $u_{g_1}^2\bigl[(\alpha-1)a_{g_1}-\alpha q_{g_1,y_0}^2\bigr]$, and the edge $g_{k+1}$ contributes
+the same expression with $y_{k+1}$ in place of $y_0$ (\Cref{lem:path}). Suppose that $y_0$ is adjacent to a
+leaf of the support, and put $p=q_{g_1,y_0}$, $s=q_{g_1,y_1}$. For $\alpha\le 2$ the equilibrium equations give
+$p<1/2$ (\Cref{lem:B}) and then $s>p$ (\Cref{lem:A}), so for $4/3\le\alpha\le 2$
+\[
+  (\alpha-1)a_{g_1}-\alpha p^2=(\alpha-1)(p+s)-\alpha p^2>2(\alpha-1)p-\alpha p^2
+  \ \ge\ \alpha p\Bigl(\frac12-p\Bigr)\ \ge\ 0 .
+\]
+A longest path of a tree component of diameter at least four, with its two end edges removed, has both ends
+adjacent to leaves, so $Q(u)>0$ and the equilibrium is unstable. In a tree component of diameter three the
+middle edge has a leaf adjacent to each endpoint, and the inequality $s>p$, applied from both sides,
+contradicts itself; no equilibrium with $1<\alpha\le 2$ has such a component.
 
 Van der Hofstad, Holmes, Kuznetsov and Ruszel \cite[Conjecture~2]{vdHHKR} conjectured that for every graph and
 $\alpha$ large enough depending on the graph, the linearly stable equilibria of the associated flow are supported on
@@ -130,52 +169,22 @@ Consider the equal-rate WARM flow \eqref{eq:flow} on a finite simple graph.
 \end{enumerate}
 \end{theorem}
 
-For $\alpha>2$ the argument rests on the diagonal condition of Holmes and Kleptsyn \cite[Proposition~1]{HK}: at a
-semistable equilibrium every edge $e=xy$ of the support satisfies $\max(q_{e,x},q_{e,y})\ge 1-1/\alpha$. Then
-$1-1/\alpha>1/2$, so a vertex holds a share at least $1-1/\alpha$ of at most one edge, and in a tree component
-either one edge has such a share at both endpoints and every other edge has it at the endpoint farther from that
-edge, or one vertex $r$ has it for no edge and every edge has it at the endpoint farther from $r$
-(\Cref{lem:count}). If an edge $e=xy$ has $q_{e,x}\le 1/\alpha$ and $q_{e,y}\ge 1-1/\alpha$, then $y$ is a leaf of
-the support (\Cref{lem:depth}). If $\alpha\le 6$, $e=ry$ has $q_{e,y}\ge 1-1/\alpha$, and $y$ is adjacent to a leaf,
-then $q_{e,r}>1/2$ (\Cref{lem:branch}). Part~(a) for $2<\alpha\le 6$ follows from these three statements. Kriebel's
-proof for $\alpha\ge 17/4$ \cite[Section~4]{Kr} is different: it shows that an edge neither of whose endpoints is a
-leaf of the support has weight greater than $3/2$, so that such edges form a matching, by bounding its two shares
-through one competing edge of weight at least one at each endpoint, and this bound is carried out on $[17/4,7]$ by
-exact interval estimates. \Cref{lem:depth,lem:branch} bound no weight. They use the equilibrium relation
-$q_{f,v}/q_{e,v}=(a_f/a_e)^\alpha$ at the endpoint $v$ where $e$ has the larger share, with $a_f>1$, or with
-$a_f=1+q_{f,v}$ when $f$ ends at a leaf, to bound the share of $e$ at its other endpoint. \Cref{lem:count} is a
-counting consequence of the fact, due to Holmes and Kleptsyn \cite[Theorem~4]{HK}, that for $\alpha>2$ every edge of
-the support has share greater than $1/2$ at one of its endpoints.
+For $\alpha>2$ the orientation has one of two forms in a tree component: either one edge has a share at least
+$1-1/\alpha$ at both endpoints and every other edge has it at the endpoint farther from that edge, or one vertex
+$r$ has it for no edge and every edge has it at the endpoint farther from $r$ (\Cref{lem:count}). This is a
+counting consequence of the fact, due to Holmes and Kleptsyn \cite[Theorem~4]{HK}, that for $\alpha>2$ every edge
+of the support has share greater than $1/2$ at one of its endpoints. If an edge $e=xy$ has $q_{e,x}\le 1/\alpha$
+and $q_{e,y}\ge 1-1/\alpha$, then $y$ is a leaf of the support (\Cref{lem:depth}). If $\alpha\le 6$, $e=ry$ has
+$q_{e,y}\ge 1-1/\alpha$, and $y$ is adjacent to a leaf, then $q_{e,r}>1/2$ (\Cref{lem:branch}). Part~(a) for
+$2<\alpha\le 6$ follows from these three statements. Kriebel's proof for $\alpha\ge 17/4$ \cite[Section~4]{Kr}
+shows instead that an edge neither of whose endpoints is a leaf of the support has weight greater than $3/2$, by
+exact interval estimates on $[17/4,7]$; \Cref{lem:depth,lem:branch} bound no weight.
 
-For $\alpha\le 2$ the bound $1-1/\alpha$ is at most $1/2$, a vertex can hold such a share of two edges, and the
-diagonal condition no longer orients the edges of a tree. By the Lyapunov function of \cite[(9)]{vdHHKR}, in the
-form of \cite[Lemmas~1 and~2]{HK}, an equilibrium $a$ is unstable as soon as
-\[
-  Q(u)=\sum_v\Bigl[(\alpha-1)\sum_{e\ni v}q_{e,v}u_e^2-\alpha\Bigl(\sum_{e\ni v}q_{e,v}u_e\Bigr)^2\Bigr]>0
-\]
-for some vector $u$ on the support (\Cref{lem:Q}); the diagonal condition is the case in which $u$ is the indicator
-of one edge. We take a path $y_0y_1\cdots y_{k+1}$ in a tree component, with edges $g_i=y_{i-1}y_i$, and the vector
-$u$ that vanishes off the path and satisfies $u_{g_1}=1$ and $q_{g_i,y_i}u_{g_i}+q_{g_{i+1},y_i}u_{g_{i+1}}=0$ for
-$1\le i\le k$. The negative terms of $Q$ then vanish at $y_1,\dots,y_k$, and
-\[
-  Q(u)=(\alpha-1)\sum_{i=2}^{k}a_{g_i}u_{g_i}^2
-  +u_{g_1}^2\bigl[(\alpha-1)a_{g_1}-\alpha q_{g_1,y_0}^2\bigr]
-  +u_{g_{k+1}}^2\bigl[(\alpha-1)a_{g_{k+1}}-\alpha q_{g_{k+1},y_{k+1}}^2\bigr]
-\]
-(\Cref{lem:path}). This is the alternating perturbation of \cite[Lemma~2]{HHK} on a path instead of an even cycle;
-on a cycle there are no end terms. Suppose that $y_0$ is adjacent to a leaf, and put $p=q_{g_1,y_0}$,
-$s=q_{g_1,y_1}$. The equilibrium equations give $p<1/2$ when $\alpha\le 2$ (\Cref{lem:B}) and then $s>p$
-(\Cref{lem:A}), so for $\alpha\ge 4/3$
-\[
-  (\alpha-1)a_{g_1}-\alpha p^2=(\alpha-1)(p+s)-\alpha p^2>2(\alpha-1)p-\alpha p^2\ \ge\ \alpha p\Bigl(\frac12-p\Bigr)\ \ge\ 0 ,
-\]
-where $2(\alpha-1)\ge\alpha/2$ is the condition $\alpha\ge 4/3$. In a tree of diameter three the middle edge has a
-leaf adjacent to each endpoint, and the inequality $s>p$, applied from both sides, contradicts itself; this is
-part~(c), which extends \cite[Proposition~10(i)]{HHK} from the path with three edges to all trees of diameter three,
-on the smaller range $\alpha\le 2$. In a tree of diameter at least four a longest path, with its two end edges
-removed, is a path of this kind at both ends, so $Q(u)>0$ and the equilibrium is unstable; this is part~(b). For
-$\alpha>4/3$ the tree hypothesis of part~(b) holds for every component, since the support of a semistable
-equilibrium is then a forest \cite[Theorem~3]{Kr}.
+For $\alpha\le 2$ the vector $u$ of the second paragraph is the alternating perturbation of \cite[Lemma~2]{HHK}
+on a path instead of an even cycle; on a cycle there are no end terms. Part~(c) extends \cite[Proposition~10(i)]{HHK}
+from the path with three edges to all trees of diameter three, on the smaller range $\alpha\le 2$. For $\alpha>4/3$
+the tree hypothesis of part~(b) holds for every component, since the support of a semistable equilibrium is then a
+forest \cite[Theorem~3]{Kr}.
 
 For $2<\alpha\le 6$ the proof of \Cref{thm:det}(a) uses only \cite{HK}. For $6<\alpha\le 24$ the whisker conclusion
 rests on \cite{Kr} alone, and for $4/3<\alpha\le 2$ so does the forest property of the support; the passage from unit
@@ -190,7 +199,7 @@ $\supp a$, and the coordinates outside the support do not enter $J$. On $(0,\inf
 \[
   L(a)=-\sum_{e}a_e+\frac1\alpha\sum_v\log S_v(a).
 \]
-Then $F_e=a_e\,\partial_eL$ \cite[(10)]{vdHHKR}, \cite[Lemma~1, Corollary~4]{HK}. At an equilibrium $\partial_eL=0$
+Then $F_e=a_e\,\partial_eL$ \cite{vdHHKR}, \cite[Lemma~1, Corollary~4]{HK}. At an equilibrium $\partial_eL=0$
 on the support, so $J=\diag(a)\,H$ with $H$ the Hessian of $L$. Since $J$ is similar to the symmetric matrix
 $\diag(a)^{1/2}H\diag(a)^{1/2}$, its eigenvalues are real, and by Sylvester's law of inertia $J$ has a positive
 eigenvalue as soon as $H$ has a positive direction (compare \cite[Corollary~5]{HK}).
@@ -242,7 +251,8 @@ Throughout this section $\alpha>2$, the equilibrium is semistable, and $h=1-1/\a
 incidence $(e,v)$ is \emph{high} if $q_{e,v}\ge h$. By \eqref{eq:diag} every support edge has a high endpoint, and
 since $h>1/2$ and $\sum_{e\ni v}q_{e,v}=1$, no vertex is high for two edges.
 
-The following two facts are due to Holmes and Kleptsyn; we include the short proof for equal rates.
+The following two facts are due to Holmes and Kleptsyn. For equal rates both follow from the diagonal
+condition \eqref{eq:diag} alone, by comparing an edge of least weight with its neighbours.
 
 \begin{lemma}[{\cite[Theorem~3, Lemma~4]{HK}; see also \cite[Lemma~4]{Kr}}]\label{lem:hk}
 Let $\alpha>2$. Every component of the support is a tree, and every support edge has weight $a_e>1$.
@@ -477,13 +487,6 @@ $\sum_{e\ni v}q_{e,v}=1$ with a common constant at every vertex and through $a_l
 
 \section*{Acknowledgments and funding}
 
-This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math
-Brain~\cite{MathBrainRepo} and working together inside the Brain framework~\cite{BrainFramework}, a shared, persistent
-memory in which the agents record claims, proofs, failed attempts and methods, retrieve one another's results,
-coordinate who works on what, and audit each other's work. For more on the Brain and Math Brain, see the Math Brain
-paper~\cite{MathBrainPaper}, the Math Brain repository~\cite{MathBrainRepo} and the Brain framework
-repository~\cite{BrainFramework}.
-
 The research presented in this paper was supported by the European Research Council (ERC) under the European
 Union's Horizon Europe research and innovation programme (grant agreement No.\ 101041711), by the Simons Foundation
 (as part of the Collaboration on the Mathematical and Scientific Foundations of Deep Learning), by Heights Labs, by
@@ -496,7 +499,8 @@ The author holds equity in Heights Labs and Convex Nexus Capital and has a manag
 \section*{Declaration of generative AI and AI-assisted technologies}
 
 The arguments of \Cref{sec:large,sec:small} were developed with AI systems (OpenAI Codex and Anthropic Claude agents
-working under the author's direction), which also drafted the text and carried out the exact-arithmetic
+working under the author's direction, with the shared memory of Math Brain \cite{MathBrainRepo,MathBrainPaper}
+and the Brain framework \cite{BrainFramework}), which also drafted the text and carried out the exact-arithmetic
 computations. They build on the results of van der Hofstad, Holmes, Kuznetsov and Ruszel \cite{vdHHKR}, Holmes and
 Kleptsyn \cite{HK}, Hirsch, Holmes and Kleptsyn \cite{HHK} and Kriebel \cite{Kr}, used as cited. The problem is due to Kleptsyn \cite{Kl} and is recorded in \cite{AOP}. The author directed
 the work and is responsible for the content of the paper and for decisions concerning its dissemination.
@@ -506,7 +510,7 @@ the work and is responsible for the content of the paper and for decisions conce
 A SymPy script that recomputes the Bernstein coefficients of \Cref{lem:branch}, the factorization in the proof of
 \Cref{lem:B}, the derivative in the proof of \Cref{lem:depth}, the inequality in \Cref{rem:nine}, the star
 equilibria of \Cref{rem:star} and the example in \Cref{sec:small} is available at
-\url{https://github.com/yspennstate/warm-whisker-threshold/tree/v1.1}.
+\url{https://github.com/yspennstate/warm-whisker-threshold}.
 
 \appendix
 \section{Notation}
