@@ -174,8 +174,8 @@ $1-1/\alpha$ at both endpoints and every other edge has it at the endpoint farth
 $r$ has it for no edge and every edge has it at the endpoint farther from $r$ (\Cref{lem:count}). This is a
 counting consequence of the fact, due to Holmes and Kleptsyn \cite[Theorem~4]{HK}, that for $\alpha>2$ every edge
 of the support has share greater than $1/2$ at one of its endpoints. If an edge $e=xy$ has $q_{e,x}\le 1/\alpha$
-and $q_{e,y}\ge 1-1/\alpha$, then $y$ is a leaf of the support (\Cref{lem:depth}). If $\alpha\le 6$, $e=ry$ has
-$q_{e,y}\ge 1-1/\alpha$, and $y$ is adjacent to a leaf, then $q_{e,r}>1/2$ (\Cref{lem:branch}). Part~(a) for
+and $q_{e,y}\ge 1-1/\alpha$, then $y$ is a leaf of the support (\Cref{lem:depth}). If $\alpha\le 6$, $e=rv$ has
+$q_{e,v}\ge 1-1/\alpha$, and $v$ is adjacent to a leaf, then $q_{e,r}>1/2$ (\Cref{lem:branch}). Part~(a) for
 $2<\alpha\le 6$ follows from these three statements. Kriebel's proof for $\alpha\ge 17/4$ \cite[Section~4]{Kr}
 shows instead that an edge neither of whose endpoints is a leaf of the support has weight greater than $3/2$, by
 exact interval estimates on $[17/4,7]$; \Cref{lem:depth,lem:branch} bound no weight.
@@ -284,12 +284,12 @@ $r$ gives the orientation in~(II).
 \end{proof}
 
 \begin{lemma}\label{lem:depth}
-Let $e=uv$ be a support edge with $q_{e,u}\le 1/\alpha$ and $q_{e,v}\ge h$. Then $v$ is a leaf of the support.
+Let $e=xy$ be a support edge with $q_{e,x}\le 1/\alpha$ and $q_{e,y}\ge h$. Then $y$ is a leaf of the support.
 \end{lemma}
 
 \begin{proof}
-Suppose $v$ has another support edge $f$. Put $\lambda=q_{e,u}$, $t=1-q_{e,v}\in(0,1/\alpha]$ and $d=q_{f,v}\le t$.
-At $v$ we have $d/(1-t)=(a_f/a_e)^\alpha$, and $a_f>1$ by \Cref{lem:hk}, so
+Suppose $y$ has another support edge $f$. Put $\lambda=q_{e,x}$, $t=1-q_{e,y}\in(0,1/\alpha]$ and $b=q_{f,y}\le t$.
+At $y$ we have $b/(1-t)=(a_f/a_e)^\alpha$, and $a_f>1$ by \Cref{lem:hk}, so
 $a_e>\bigl((1-t)/t\bigr)^{1/\alpha}$. Since $a_e=\lambda+1-t$,
 \[
   \lambda>t-1+\Bigl(\frac{1-t}{t}\Bigr)^{1/\alpha}.
@@ -304,7 +304,7 @@ Differentiating,
   \varphi'(t)=-\frac1{1-t}-\frac1t+\frac{\alpha}{1+1/\alpha-t}
   =\frac{\alpha^2t(1-t)-\alpha-1+\alpha t}{\alpha t(1-t)(1+1/\alpha-t)} .
 \]
-With $x=\alpha t\in(0,1]$ the numerator equals $\alpha x-x^2-\alpha-1+x=-\bigl(1+(1-x)(\alpha-x)\bigr)<0$, so
+With $\tau=\alpha t\in(0,1]$ the numerator equals $\alpha\tau-\tau^2-\alpha-1+\tau=-\bigl(1+(1-\tau)(\alpha-\tau)\bigr)<0$, so
 $\varphi'<0$ on $(0,1/\alpha]$.
 Hence $\varphi(t)\ge\varphi(1/\alpha)=\log(\alpha-1)>0$.
 \end{proof}
@@ -315,13 +315,13 @@ with $y$ a leaf. Then $q_{e,r}>1/2$.
 \end{lemma}
 
 \begin{proof}
-Put $\lambda=q_{e,r}$, $t=1-q_{e,v}\le 1/\alpha$ and $d=q_{f,v}\le t$. Since $y$ is a leaf, $q_{f,y}=1$ and
-$a_f=1+d$. At $v$, $d/(1-t)=(a_f/a_e)^\alpha$, so $a_e=(1+d)\bigl((1-t)/d\bigr)^{1/\alpha}$ and
+Put $\lambda=q_{e,r}$, $t=1-q_{e,v}\le 1/\alpha$ and $b=q_{f,v}\le t$. Since $y$ is a leaf, $q_{f,y}=1$ and
+$a_f=1+b$. At $v$, $b/(1-t)=(a_f/a_e)^\alpha$, so $a_e=(1+b)\bigl((1-t)/b\bigr)^{1/\alpha}$ and
 \[
-  \lambda=t-1+(1+d)\,d^{-1/\alpha}(1-t)^{1/\alpha}.
+  \lambda=t-1+(1+b)\,b^{-1/\alpha}(1-t)^{1/\alpha}.
 \]
-The logarithmic derivative of $d\mapsto(1+d)d^{-1/\alpha}$ is $\frac1{1+d}-\frac1{\alpha d}$, which is negative
-because $(\alpha-1)d<1$. Hence the right side is smallest at $d=t$, and
+The logarithmic derivative of $b\mapsto(1+b)b^{-1/\alpha}$ is $\frac1{1+b}-\frac1{\alpha b}$, which is negative
+because $(\alpha-1)b<1$. Hence the right side is smallest at $b=t$, and
 \[
   \lambda\ \ge\ t-1+(1+t)\Bigl(\frac{1-t}{t}\Bigr)^{1/\alpha}\ \ge\ t-1+(1+t)\Bigl(\frac{1-t}{t}\Bigr)^{1/6},
 \]
@@ -535,15 +535,21 @@ $q_{e,v}$ & share $a_e^\alpha/S_v(a)$ of edge $e$ at vertex $v$ & \Cref{sec:intr
 $DF(a)$ & Jacobian; linearly stable, semistable, unstable & \Cref{sec:intro}\\
 $J$ & block of $DF(a)$ on $\supp a$ & \Cref{sec:prelim}\\
 $L$, $H$ & Lyapunov function and its Hessian & \Cref{sec:prelim}\\
-$u$, $w$ & test vector and $w_e=a_eu_e$ & \Cref{lem:Q}\\
+$u$, $w$ & test vector and $w_e=a_eu_e$ & \Cref{sec:intro}, \Cref{lem:Q}\\
+$y_0\cdots y_{k+1}$, $g_i$ & path in a tree component and its edges $g_i=y_{i-1}y_i$ & \Cref{sec:intro}, \Cref{lem:path}\\
+$C$ & a component of the support & \Cref{sec:prelim}\\
 $Q(u)$ & Hessian form in the variables $u_e=w_e/a_e$ & \Cref{sec:intro}, \Cref{lem:Q}\\
 $h$ & $1-1/\alpha$, threshold for a high incidence & \Cref{sec:large}\\
 $\eta$ & number of high incidences of a tree component & \Cref{lem:count}\\
 $T$ & a tree component of the support & \Cref{lem:count}\\
+$r$ & the vertex of $T$ that is high for no edge, in case (II) & \Cref{sec:intro}, \Cref{lem:count}\\
 $d_e(v)$ & $(\alpha-1)a_e-\alpha q_{e,x}^2$ for $e=vx$ & \Cref{sec:small}\\
-$p$, $s$, $q$ & $q_{e,x}$, $q_{e,c}$, $q_{l,x}$ for $e=cx$ and leaf edge $l=xy$ & \Cref{sec:small}\\
+$p$, $s$, $q$ & $q_{e,x}$, $q_{e,c}$, $q_{l,x}$ for $e=cx$ and leaf edge $l=xy$ & \Cref{sec:intro}, \Cref{sec:small}\\
 \end{tabular}
 \end{center}
+
+Letters used inside a single proof ($b$, $\lambda$, $\tau$, $\varphi$, $P$, $\sigma$, and $A$, $B$ in the example of
+\Cref{sec:small}) are defined there and are not listed.
 
 \begin{thebibliography}{99}
 
