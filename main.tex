@@ -115,7 +115,7 @@ linearly stable \cite[Proposition~2(v)]{vdHHKR}. By \cite[Theorem~1]{HHK} the pr
 converges to it with positive probability, so all three edges of the triangle survive with positive probability
 \cite[Theorem~1]{Kr}. At $\alpha=4/3$ that
 equilibrium has eigenvalues $-1,0,0$, and the question remains open. Stars do occur for $4/3<\alpha\le 2$: on the
-star with $k$ edges the equilibrium with equal weights is linearly stable (\Cref{rem:star}), so from unit initial counts
+star with $k$ edges the equilibrium with equal weights is linearly stable \cite[Proposition~2(iii)]{vdHHKR} (see \Cref{rem:star}), so from unit initial counts
 it is the limit with positive probability.
 
 \Cref{thm:main} is a consequence of the stochastic theorems above and of the deterministic statement below, which
@@ -149,7 +149,7 @@ the support has share greater than $1/2$ at one of its endpoints.
 
 For $\alpha\le 2$ the bound $1-1/\alpha$ is at most $1/2$, a vertex can hold such a share of two edges, and the
 diagonal condition no longer orients the edges of a tree. By the Lyapunov function of \cite[(9)]{vdHHKR}, in the
-form of \cite[Section~2.2]{HK}, an equilibrium $a$ is unstable as soon as
+form of \cite[Lemmas~1 and~2]{HK}, an equilibrium $a$ is unstable as soon as
 \[
   Q(u)=\sum_v\Bigl[(\alpha-1)\sum_{e\ni v}q_{e,v}u_e^2-\alpha\Bigl(\sum_{e\ni v}q_{e,v}u_e\Bigr)^2\Bigr]>0
 \]
@@ -195,7 +195,7 @@ on the support, so $J=\diag(a)\,H$ with $H$ the Hessian of $L$. Since $J$ is sim
 $\diag(a)^{1/2}H\diag(a)^{1/2}$, its eigenvalues are real, and by Sylvester's law of inertia $J$ has a positive
 eigenvalue as soon as $H$ has a positive direction (compare \cite[Corollary~5]{HK}).
 
-The next formula is the Hessian of \cite[Section~2.2]{HK} (compare \cite[Section~3]{Kr}) written in the variables
+The next formula is the Hessian of $L$ (compare the proof of \cite[Proposition~1]{HK} and \cite[Section~3]{Kr}) written in the variables
 $u_e=w_e/a_e$.
 
 \begin{lemma}\label{lem:Q}
@@ -225,7 +225,8 @@ $\max(q_{e,x},q_{e,y})\ge 1-1/\alpha$.
 
 \begin{remark}\label{rem:star}
 On the star with $k$ edges the equilibrium with equal weights has all weights $(k+1)/k$ in the present normalization \cite[Theorem~6(i)]{vdHHKR}.
-Its centre gives each edge the share $1/k$ and each leaf gives its edge the share $1$, so
+For $k\ge 2$ it is linearly stable if and only if $\alpha<k+1$ \cite[Proposition~2(iii)]{vdHHKR}; for $\alpha\le 2$ this can also be
+read off \Cref{lem:Q}. Its centre gives each edge the share $1/k$ and each leaf gives its edge the share $1$, so
 $Q(u)=\bigl(\frac{\alpha-1}{k}-1\bigr)\sum_e u_e^2-\frac{\alpha}{k^2}\bigl(\sum_e u_e\bigr)^2$. For $k\ge 2$ and
 $\alpha\le 2$ the first coefficient is at most $-1/2$, and for $k=1$ the form equals $-2u_e^2$; in both cases $Q(u)<0$
 for $u\ne 0$, so by \Cref{lem:Q} and the inertia argument above the equilibrium is linearly stable.
