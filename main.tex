@@ -31,13 +31,13 @@ Givat Ram, Jerusalem, Israel}
 
 \begin{abstract}
 In the WARM model of van der Hofstad, Holmes, Kuznetsov and Ruszel on a finite graph, each vertex fires at Poisson times and reinforces one incident edge, chosen
-with probability proportional to the $\alpha$-th power of its count. Holmes and Kleptsyn proved that with equal
-firing rates and $\alpha>25$ the infinitely reinforced edges form whiskers, trees of diameter at most three, and
+with probability proportional to the $\alpha$-th power of its count. Results of Holmes and Kleptsyn and of Hirsch, Holmes and
+Kleptsyn show that with equal firing rates and $\alpha>25$ the infinitely reinforced edges form whiskers, trees of diameter at most three, and
 Kriebel lowered the threshold to $17/4$. We prove the same conclusion for every $\alpha>4/3$, and show that for
 $4/3<\alpha\le 2$ every component is a star. The constant cannot be lowered, since for $\alpha<4/3$ the triangle keeps
 all three edges with positive probability. This answers the whisker problem of Kleptsyn and of Aletti et al., except
-at $\alpha=4/3$. For $\alpha\le 2$ the Hessian of a Lyapunov function is positive on a vector supported on a path between two
-edges adjacent to leaves of the tree and alternating in sign along it.
+at $\alpha=4/3$. The new estimate is a test vector, supported on a path and alternating in sign along it, on which the
+Hessian of the Lyapunov function is positive.
 \end{abstract}
 
 \noindent\textit{Mathematics Subject Classification (2020):} 60K35, 37C75.\\
@@ -60,7 +60,8 @@ model for the way neurons select among connections. Write
 A \emph{whisker} is a tree of diameter at most three, and a \emph{star} is a tree of diameter at most two (a single
 edge included).
 
-The urn is governed by a flow. For $a=(a_e)_{e\in E}\in[0,\infty)^E$ and a vertex $v$ put
+The process is governed by a flow. For $a=(a_e)_{e\in E}\in[0,\infty)^E$, the \emph{weight} of $e$ being
+$a_e$, and a vertex $v$ put
 $S_v(a)=\sum_{f\ni v}a_f^\alpha$. The equal-rate WARM flow is
 \begin{equation}\label{eq:flow}
   \dot a_e=F_e(a)=-a_e+\sum_{v\in e}\frac{a_e^\alpha}{S_v(a)} ,
@@ -104,18 +105,18 @@ for $\alpha\ge 17/4$ \cite[Theorem~1(2)]{Kr}, leaving the interval $4/3<\alpha<1
 Our main theorem closes that interval.
 
 \begin{theorem}\label{thm:main}
-Let $G$ be a finite simple graph with equal firing rates and positive integer initial counts, and let
-$\alpha>4/3$. Then almost surely every component of $(V,E_\infty)$ with at least one edge is a whisker. If moreover
+Consider the WARM model on a finite simple graph $G$ with equal firing rates and positive integer initial
+counts, and let $\alpha>4/3$. Then almost surely every component of $(V,E_\infty)$ with at least one edge is a whisker. If moreover
 $\alpha\le 2$, then almost surely every such component is a star.
 \end{theorem}
 
 The constant $4/3$ is best possible. For $1<\alpha<4/3$ the equilibrium of the triangle with equal weights is
-linearly stable \cite[Proposition~2(v)]{vdHHKR}, so by \cite[Theorem~1]{HHK} the urn started from unit counts
+linearly stable \cite[Proposition~2(v)]{vdHHKR}, so by \cite[Theorem~1]{HHK} the process started from unit counts
 converges to it with positive probability, and all three edges of the triangle survive with positive probability
 \cite[Theorem~1]{Kr}; this is the observation behind the suggestion in \cite{Kl,AOP}. At $\alpha=4/3$ that
 equilibrium has eigenvalues $-1,0,0$, and the question remains open. Stars do occur for $4/3<\alpha\le 2$: on the
-star with $k$ edges the equilibrium with equal weights is linearly stable (\Cref{rem:star}), so it is the limit with
-positive probability.
+star with $k$ edges the equilibrium with equal weights is linearly stable (\Cref{rem:star}), so from unit initial counts
+it is the limit with positive probability.
 
 \Cref{thm:main} is a consequence of the stochastic theorems above and of the deterministic statement below, which
 is proved in \Cref{sec:large,sec:small}; the deduction is in \Cref{sec:stoch}.
@@ -143,8 +144,8 @@ through one competing edge of weight at least one at each endpoint, and this bou
 exact interval estimates. \Cref{lem:depth,lem:branch} bound no weight. They use the equilibrium relation
 $q_{f,v}/q_{e,v}=(a_f/a_e)^\alpha$ at the endpoint $v$ where $e$ has the larger share, with $a_f>1$, or with
 $a_f=1+q_{f,v}$ when $f$ ends at a leaf, to bound the share of $e$ at its other endpoint. \Cref{lem:count} is a
-counting consequence of the fact, due to Holmes and Kleptsyn, that for $\alpha>2$ every support edge is the champion
-of one of its endpoints \cite[Theorem~4]{HK}.
+counting consequence of the fact, due to Holmes and Kleptsyn \cite[Theorem~4]{HK}, that for $\alpha>2$ every edge of
+the support has share greater than $1/2$ at one of its endpoints.
 
 For $\alpha\le 2$ the bound $1-1/\alpha$ is at most $1/2$, a vertex can hold such a share of two edges, and the
 diagonal condition no longer orients the edges of a tree. By the Lyapunov function of \cite[(A.4)]{vdHHKR}, in the
@@ -176,7 +177,7 @@ removed, is a path of this kind at both ends, so $Q(u)>0$ and the equilibrium is
 $\alpha>4/3$ the tree hypothesis of part~(b) holds for every component, since the support of a semistable
 equilibrium is then a forest \cite[Theorem~3]{Kr}.
 
-For $2<\alpha\le 6$ the proof of \Cref{thm:det}(a) uses only \cite{HK}. For $6<\alpha\le 25$ the whisker conclusion
+For $2<\alpha\le 6$ the proof of \Cref{thm:det}(a) uses only \cite{HK}. For $6<\alpha\le 24$ the whisker conclusion
 rests on \cite{Kr} alone, and for $4/3<\alpha\le 2$ so does the forest property of the support; the passage from unit
 initial counts to arbitrary ones is \cite[Lemma~2]{Kr}.
 
@@ -189,7 +190,7 @@ $\supp a$, and the coordinates outside the support do not enter $J$. On $(0,\inf
 \[
   L(a)=-\sum_{e}a_e+\frac1\alpha\sum_v\log S_v(a).
 \]
-Then $F_e=a_e\,\partial_eL$ \cite[(A.4)]{vdHHKR}, \cite[Lemma~2, Corollary~4]{HK}. At an equilibrium $\partial_eL=0$
+Then $F_e=a_e\,\partial_eL$ \cite[(A.4)]{vdHHKR}, \cite[Lemma~1, Corollary~4]{HK}. At an equilibrium $\partial_eL=0$
 on the support, so $J=\diag(a)\,H$ with $H$ the Hessian of $L$. Since $J$ is similar to the symmetric matrix
 $\diag(a)^{1/2}H\diag(a)^{1/2}$, its eigenvalues are real, and by Sylvester's law of inertia $J$ has a positive
 eigenvalue as soon as $H$ has a positive direction (compare \cite[Corollary~5]{HK}).
@@ -335,8 +336,9 @@ depth-one vertex has children, and $T$ has diameter at most three.
 \end{proof}
 
 \begin{remark}
-The bound of \Cref{lem:branch} fails near $\alpha=9$. At $\alpha=9$ and $t=1/12$ the lower bound for $\lambda$
-equals $-\frac{11}{12}+\frac{13}{12}\,11^{1/9}$, which is below $1/2$ because $11\cdot 13^9<17^9$.
+At $\alpha=9$ and $t=1/12$ the lower bound $t-1+(1+t)((1-t)/t)^{1/\alpha}$ for $\lambda$ in the proof of
+\Cref{lem:branch} equals $-\frac{11}{12}+\frac{13}{12}\,11^{1/9}$, which is below $1/2$ because $11\cdot 13^9<17^9$.
+The argument of \Cref{lem:branch} therefore does not extend to every $\alpha>2$.
 \end{remark}
 
 \section{\texorpdfstring{The range $1<\alpha\le 2$}{The range 1 < alpha <= 2}}\label{sec:small}
@@ -413,7 +415,7 @@ $u_{g_1}^2\bigl[(\alpha-1)q_{g_1,y_0}-\alpha q_{g_1,y_0}^2\bigr]$, and $y_{k+1}$
 Collecting by edges and using $a_e=q_{e,x}+q_{e,y}$ for $e=xy$: a middle edge $g_i$, $2\le i\le k$, has both endpoints inner and
 collects $(\alpha-1)a_{g_i}u_{g_i}^2$, while $g_1$ collects
 $u_{g_1}^2\bigl[(\alpha-1)(q_{g_1,y_1}+q_{g_1,y_0})-\alpha q_{g_1,y_0}^2\bigr]=u_{g_1}^2d_{g_1}(y_1)$, and similarly
-for $g_{k+1}$. The vertices of the path are distinct because $T$ is a tree.
+for $g_{k+1}$.
 \end{proof}
 
 \begin{corollary}\label{cor:facing}
@@ -445,7 +447,7 @@ and ends with $e'$. \Cref{cor:facing} shows that the equilibrium is not semistab
 \begin{example}
 Let $\alpha=3/2$ and let $T$ be the path with four edges, with weights $(A,B,B,A)$, where $A=(5+\sqrt5)/4$ and
 $B=(5-\sqrt5)/4$. This is a positive equilibrium. The test vector of \Cref{lem:path} on the two middle edges
-($k=1$) gives $Q(u)=(7\sqrt5-11)/8>0$, so the equilibrium is unstable, as \Cref{thm:det}(b) requires.
+($k=1$) gives $Q(u)=(7\sqrt5-11)/8>0$, so the equilibrium is unstable.
 \end{example}
 
 \begin{remark}
@@ -458,16 +460,16 @@ equilibrium need not be a forest there: the triangle equilibrium with equal weig
 Suppose first that all initial counts equal one. By \cite[Theorem~1]{HHK}, applied to the finite graph $G$ with
 unit rates, $N_t/t$ converges almost surely to a semistable equilibrium $a$ of \eqref{eq:flow}, and by
 \cite[Proposition~1]{HHK}, whose bounded-rate and bounded-degree hypotheses hold on a finite graph,
-$E_\infty=\supp a$ almost surely. Kriebel's Lemma~2 \cite{Kr} transfers these almost-sure conclusions to any fixed
+$E_\infty=\supp a$ almost surely. \cite[Lemma~2]{Kr} transfers these almost-sure conclusions to any fixed
 positive integer initial counts: a prescribed finite sequence of firings and choices leads from unit counts to the
 given counts with positive probability, and the future process then has the law started from those counts.
 
 If $\alpha>2$, every component of $\supp a$ is a whisker by \Cref{thm:det}(a). If $4/3<\alpha\le 2$, the support of
 a semistable equilibrium is a forest by \cite[Theorem~3]{Kr}, since $\sec^2(\pi/(2m))\le 4/3$ for every odd
-$m\ge 3$. So every component is a tree, and hence a star by \Cref{thm:det}(b). \qed
+$m\ge 3$. So every component is a tree, and hence a star by \Cref{thm:det}(b).
 
 \begin{remark}
-The case $\alpha=4/3$ remains open. With unequal rates the whisker conclusion is false in general
+With unequal rates the whisker conclusion is false in general
 \cite[Example~1]{HK}. \Cref{lem:count,lem:depth,lem:branch,lem:A,lem:B} use equal rates through the normalization
 $\sum_{e\ni v}q_{e,v}=1$ with a common constant at every vertex and through $a_l=1+q$ at a leaf edge.
 \end{remark}
@@ -495,14 +497,14 @@ The author holds equity in Heights Labs and Convex Nexus Capital and has a manag
 The arguments of \Cref{sec:large,sec:small} were developed with AI systems (OpenAI Codex and Anthropic Claude agents
 working under the author's direction), which also drafted the text and carried out the exact-arithmetic
 computations. They build on the results of van der Hofstad, Holmes, Kuznetsov and Ruszel \cite{vdHHKR}, Holmes and
-Kleptsyn \cite{HK}, Hirsch, Holmes and Kleptsyn \cite{HHK} and Kriebel \cite{Kr}, used as cited. The author directed
+Kleptsyn \cite{HK}, Hirsch, Holmes and Kleptsyn \cite{HHK} and Kriebel \cite{Kr}, used as cited. The problem is due to Kleptsyn \cite{Kl} and is recorded in \cite{AOP}. The author directed
 the work and is responsible for the content of the paper and for decisions concerning its dissemination.
 
 \section*{Data and code availability}
 
 A SymPy script that recomputes the Bernstein coefficients of \Cref{lem:branch}, the factorization in the proof of
 \Cref{lem:B}, the derivative in the proof of \Cref{lem:depth} and the example in \Cref{sec:small} is available at
-\url{https://github.com/yspennstate/warm-whisker-threshold/tree/v1.0}.
+\url{https://github.com/yspennstate/warm-whisker-threshold/tree/v1.1}.
 
 \appendix
 \section{Notation}
@@ -515,7 +517,7 @@ $G=(V,E)$ & finite simple graph & \Cref{sec:intro}\\
 $\alpha$ & reinforcement exponent, $\alpha>1$ & \Cref{sec:intro}\\
 $N_t(e)$ & count of edge $e$ at time $t$ & \Cref{sec:intro}\\
 $E_\infty$ & edges whose counts tend to infinity & \Cref{sec:intro}\\
-$a=(a_e)$ & point of $[0,\infty)^E$; an equilibrium & \Cref{sec:intro}\\
+$a=(a_e)$ & point of $[0,\infty)^E$ ($a_e$ the weight of $e$); an equilibrium & \Cref{sec:intro}\\
 $S_v(a)$ & $\sum_{f\ni v}a_f^\alpha$ & \Cref{sec:intro}\\
 $F$ & vector field of the flow \eqref{eq:flow} & \Cref{sec:intro}\\
 $\supp a$ & support $\{e:a_e>0\}$ & \Cref{sec:intro}\\
@@ -524,7 +526,7 @@ $DF(a)$ & Jacobian; linearly stable, semistable, unstable & \Cref{sec:intro}\\
 $J$ & block of $DF(a)$ on $\supp a$ & \Cref{sec:prelim}\\
 $L$, $H$ & Lyapunov function and its Hessian & \Cref{sec:prelim}\\
 $u$, $w$ & test vector and $w_e=a_eu_e$ & \Cref{lem:Q}\\
-$Q(u)$ & Hessian form in the variables $u_e=w_e/a_e$ & \Cref{lem:Q}\\
+$Q(u)$ & Hessian form in the variables $u_e=w_e/a_e$ & \Cref{sec:intro}, \Cref{lem:Q}\\
 $h$ & $1-1/\alpha$, threshold for a high incidence & \Cref{sec:large}\\
 $\eta$ & number of high incidences of a tree component & \Cref{lem:count}\\
 $T$ & a tree component of the support & \Cref{lem:count}\\
