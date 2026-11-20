@@ -79,7 +79,7 @@ With equal rates, Holmes and Kleptsyn \cite[Theorem~2(a)]{HK} proved that for $\
 support of a semistable equilibrium is a whisker, and Kriebel \cite[Section~4]{Kr} proved the same for
 $\alpha\ge 17/4$. By the convergence theorem of Hirsch, Holmes and Kleptsyn \cite[Theorem~1, Proposition~1]{HHK} and
 \cite[Lemma~2]{Kr}, the set $E_\infty$ is almost surely the support of a semistable equilibrium, so for
-$\alpha\ge 17/4$ almost surely every component of $(V,E_\infty)$ is a whisker. Kriebel also proved that for
+$\alpha\ge 17/4$ almost surely every component of $(V,E_\infty)$ is a whisker \cite[Theorem~1(2)]{Kr}. Kriebel also proved that for
 $\alpha>4/3$ the support of a semistable equilibrium is a forest \cite[Theorem~3]{Kr}, and that almost surely
 $(V,E_\infty)$ is a forest, for arbitrary positive rates \cite[Theorem~1(1)]{Kr}; for $\alpha<4/3$ the triangle with
 equal weights is a linearly stable equilibrium \cite[Proposition~2(v)]{vdHHKR}. We prove that with equal rates and
@@ -95,11 +95,14 @@ share of at most one edge. Kriebel deduces from it that an edge neither of whose
 has weight greater than $3/2$, and proves this bound for $\alpha\ge 17/4$ by exact interval estimates on $[17/4,7]$
 \cite[Section~4]{Kr}. For $2<\alpha\le 6$ we use no bound on weights. We extend to trees the argument that Hirsch,
 Holmes and Kleptsyn give for paths \cite[Proposition~9, Corollary~3 and Lemma~4]{HHK}. Two edges $e,f$ of the
-support at a common vertex $v$ satisfy $q_{f,v}/q_{e,v}=(a_f/a_e)^\alpha$. If $f$ joins $v$ to a leaf and $e$ has a
-share at least $1-1/\alpha$ at $v$, this relation gives $e$ a share greater than $1/2$ at its other endpoint
-(\Cref{lem:branch}). With the two shapes of \Cref{lem:count}, which rest on \cite[Theorem~4]{HK}, and with
-\Cref{lem:depth}, every tree component has diameter at most three. With Kriebel's theorem this covers every
-$\alpha>2$.
+support at a common vertex $v$ satisfy $q_{f,v}/q_{e,v}=(a_f/a_e)^\alpha$. If $\alpha\le 6$, $f$ joins $v$ to a
+leaf and $e$ has a share at least $1-1/\alpha$ at $v$, this relation gives $e$ a share greater than $1/2$ at its
+other endpoint (\Cref{lem:branch}). By \Cref{lem:count}, which rests on \cite[Theorem~4]{HK}, in a tree component
+either one edge has a share at least $1-1/\alpha$ at both endpoints and every other edge has it at its endpoint
+farther from that edge, or one vertex has such a share of no edge and every edge has it at its endpoint farther
+from that vertex. An edge with share at most $1/\alpha$ at one endpoint and at least $1-1/\alpha$ at the other ends
+in a leaf (\Cref{lem:depth}). These three lemmas give that every tree component has diameter at most three when
+$2<\alpha\le 6$, and with Kriebel's theorem this covers every $\alpha>2$.
 
 For $\alpha\le 2$ the bound $1-1/\alpha$ is at most $1/2$, a vertex can have such a share of two edges, and this
 argument gives nothing. In this range we use another direction of instability. By the Lyapunov function of
