@@ -104,9 +104,11 @@ For $\alpha\le 2$ the bound $1-1/\alpha$ is at most $1/2$, and a vertex can have
 centre of the star with two edges and equal weights both shares equal $1/2$. The diagonal condition no longer
 separates the edges at a vertex.
 
-For $\alpha\le 2$ we use a second inequality. At a semistable equilibrium the Hessian of the Lyapunov function of
-\cite{vdHHKR} has no positive direction (\Cref{lem:Q}); the diagonal condition is this statement for the direction
-of a single edge. We apply it to a direction supported on a path. Call a vertex a \emph{leaf} if it lies on exactly
+For $\alpha\le 2$ we use a second inequality. At a semistable equilibrium the Hessian $H$ of the Lyapunov function
+of \cite{vdHHKR} satisfies $\langle w,Hw\rangle\le 0$ for every vector $w$ indexed by the support. We write
+$w_e=a_eu_e$ and call $u$ a \emph{test vector}; \Cref{lem:Q} gives $\langle w,Hw\rangle$ as a quadratic form $Q(u)$
+in the shares. The diagonal condition is $Q(u)\le 0$ for the test vector equal to one on a single edge and zero
+elsewhere. We apply $Q(u)\le 0$ to a test vector supported on a path. Call a vertex a \emph{leaf} if it lies on exactly
 one edge of the support. Let $y_0y_1\cdots y_{k+1}$, $k\ge 1$, be a path in a tree component of the support, with
 edges $g_i=y_{i-1}y_i$, and let $u_{g_1}=1$ and $q_{g_i,y_i}u_{g_i}+q_{g_{i+1},y_i}u_{g_{i+1}}=0$ for $1\le i\le k$.
 This is the alternating perturbation of Hirsch, Holmes and Kleptsyn for even cycles \cite[Lemma~2]{HHK}, placed on a
@@ -213,10 +215,10 @@ function of \cite[(A.4)]{vdHHKR} is
 Then $F_e=a_e\,\partial_eL$ with $\partial_e=\partial/\partial a_e$ \cite[(A.5)]{vdHHKR}, \cite[Lemma~1, Corollary~4]{HK}. At an equilibrium $\partial_eL=0$
 on the support, so $J=\diag(a)\,H$ with $H$ the Hessian of $L$. Since $J$ is similar to the symmetric matrix
 $\diag(a)^{1/2}H\diag(a)^{1/2}$, its eigenvalues are real, and by Sylvester's law of inertia $J$ has a positive
-eigenvalue as soon as $H$ has a positive direction (compare \cite[Corollary~5]{HK}).
+eigenvalue as soon as $\langle w,Hw\rangle>0$ for some $w$ (compare \cite[Corollary~5]{HK}).
 
 The next formula is the Hessian of $L$ (compare the proof of \cite[Proposition~1]{HK} and \cite[Section~3]{Kr}) written in the variables
-$u_e=w_e/a_e$. We call $u\in\mathbb R^{\supp a}$ a \emph{test vector}.
+$u_e=w_e/a_e$.
 
 \begin{lemma}\label{lem:Q}
 At an equilibrium, for $u\in\mathbb R^{\supp a}$ and $w_e=a_eu_e$,
@@ -284,8 +286,8 @@ Let $\alpha>2$, let $a$ be a semistable equilibrium, and let $T$ be a component 
 \end{lemma}
 
 \begin{proof}
-Let $\eta$ be the number of high incidences. Each edge has at least one and each vertex at most one, so
-$m\le \eta\le m+1$. If $\eta=m+1$, exactly one edge $e_0$ is high at both endpoints and every vertex is high for exactly one
+Let $\eta$ be the number of high incidences. Each edge has at least one high incidence, and each of the $m+1$
+vertices of the tree $T$ (\Cref{lem:hk}) is high for at most one edge, so $m\le \eta\le m+1$. If $\eta=m+1$, exactly one edge $e_0$ is high at both endpoints and every vertex is high for exactly one
 edge. If $f\ne e_0$ is joined to $e_0$ through a path whose last vertex before $f$ is $x$, then by induction on the
 length of the path $x$ is already high for the previous edge, so $f$ is high at its other endpoint. If $\eta=m$, every
 edge is high at exactly one endpoint, and exactly one vertex $r$ is high for no edge. Induction on the distance from
@@ -492,11 +494,6 @@ If $\alpha>2$, every component of $\supp a$ is a whisker by \Cref{thm:det}(a). I
 a semistable equilibrium is a forest by \cite[Theorem~3]{Kr}, since $\sec^2(\pi/(2m))\le 4/3$ for every odd
 $m\ge 3$. So every component is a tree, and hence a star by \Cref{thm:det}(b).
 
-\begin{remark}
-The proofs of \Cref{lem:count,lem:depth,lem:branch,lem:A,lem:B} use equal rates in two places: through the
-normalization $\sum_{e\ni v}q_{e,v}=1$ with a common constant at every vertex, and through $a_{\ell}=1+\theta$ at a leaf
-edge.
-\end{remark}
 
 \section*{Acknowledgments and funding}
 
