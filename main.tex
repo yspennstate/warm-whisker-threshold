@@ -89,7 +89,7 @@ integer initial counts. The problem is
 therefore to describe the support of a semistable equilibrium. A \emph{component} of the support is a connected
 component, with at least one edge, of the graph $(V,\supp a)$. With equal rates, Holmes and Kleptsyn
 \cite[Theorem~2(a)]{HK} proved that for $\alpha>25$ every component of this support is a whisker, and Kriebel
-\cite[Theorem~1(2)]{Kr} proved this for $\alpha\ge 17/4$; with unequal rates the conclusion is false in general
+\cite[Section~4]{Kr} proved this for $\alpha\ge 17/4$; with unequal rates the conclusion is false in general
 \cite[Example~1]{HK}. Kriebel also proved that for $\alpha>4/3$ the support of a semistable equilibrium is a forest
 \cite[Theorem~3]{Kr}. On the triangle the equilibrium with equal weights is linearly stable if and only if
 $\alpha<4/3$ \cite[Theorem~3.8]{vdHHKR}, so for $1<\alpha<4/3$ the support of a semistable equilibrium need not
@@ -139,6 +139,23 @@ have leaf neighbours, and the inequality $s>p$, applied to $e$ from each endpoin
 $q_{e,x}>q_{e,x'}$. Hence for $4/3\le\alpha\le 2$ every tree component of the support of a semistable equilibrium is
 a star (\Cref{thm:det}), and for $4/3<\alpha\le 2$, where the support is a forest, every component is a star.
 
+For $\alpha\ge 17/4$ Kriebel shows that an edge neither of whose
+endpoints is a leaf has weight greater than $3/2$, by exact interval estimates for $17/4\le\alpha\le 7$ and a separate
+argument for $\alpha\ge 7$. Such an edge has a share greater than $1/2$ at both endpoints, so no two of them meet, and
+a tree of diameter at least four contains two that do \cite[Section~4]{Kr}. The bound $a_e>3/2$ is not available for
+$\alpha<17/4$, and for $2<\alpha\le 6$ \Cref{lem:count,lem:depth,lem:branch} need only $a_e>1$ (\Cref{lem:hk}).
+
+Let $2<\alpha\le 6$. Two edges $e,f$ of the support at a
+common vertex $v$ satisfy $q_{f,v}/q_{e,v}=(a_f/a_e)^\alpha$. If $f$ joins $v$ to a leaf and $e$ has
+a share at least $1-1/\alpha$ at $v$, this relation gives $e$ a share greater than $1/2$ at its other endpoint
+(\Cref{lem:branch}). \Cref{lem:count} counts these shares over the edges and vertices of a tree (for a path, see
+\cite[Corollary~3]{HHK}). Either one edge has a share at least $1-1/\alpha$ at both endpoints, and every other edge
+has it at its endpoint farther from that edge; or one vertex has such a share of no edge, and every edge has it at
+its endpoint farther from that vertex. An edge with share at most $1/\alpha$ at one endpoint and at least
+$1-1/\alpha$ at the other has a leaf as that other endpoint (\Cref{lem:depth}). These three lemmas give that every
+tree component has diameter at most three when $2<\alpha\le 6$, and with Kriebel's argument this covers every
+$\alpha>2$.
+
 \begin{theorem}\label{thm:main}
 Consider the WARM model on a finite simple graph $G$ with equal rates and positive integer initial
 counts, and let $\alpha>4/3$. Then almost surely every component of $(V,E_\infty)$ with at least one edge is a whisker. If moreover
@@ -155,7 +172,7 @@ it is the limit with positive probability.
 \Cref{thm:main} follows from the results quoted above and \Cref{thm:det} below; the deduction is in
 \Cref{sec:stoch}, and \Cref{thm:det} is proved in \Cref{sec:large,sec:small}. Two ranges of \Cref{thm:main} rest on
 Kriebel's preprint \cite{Kr}: for $4/3<\alpha\le2$ the proof uses his forest theorem \cite[Theorem~3]{Kr}, and for
-$6<\alpha\le25$ his whisker theorem \cite[Theorem~1(2)]{Kr}. The whisker conclusion for $2<\alpha\le6$ and for
+$6<\alpha\le25$ the equilibrium step of his whisker theorem \cite[Section~4]{Kr}. The whisker conclusion for $2<\alpha\le6$ and for
 $\alpha>25$, and the star conclusion for tree components when $4/3\le\alpha\le2$, rest on \Cref{thm:det} and published
 results.
 
@@ -169,7 +186,7 @@ Consider the equal-rate WARM flow \eqref{eq:flow} on a finite simple graph.
 \end{theorem}
 
 For $2<\alpha\le 6$ the proof of \Cref{thm:det}(a) uses \cite[Theorem~3, Lemma~4]{HK} and the argument of
-\cite[Proposition~9]{HHK}. For $\alpha>6$ the whisker conclusion is Kriebel's \cite[Theorem~1(2)]{Kr}, and
+\cite[Proposition~9]{HHK}. For $\alpha\ge 17/4$ the whisker conclusion is Kriebel's \cite[Section~4]{Kr}, and
 for $\alpha>25$ it is also \cite[Theorem~2(a)]{HK}.
 
 Van der Hofstad, Holmes, Kuznetsov and Ruszel \cite[Conjecture~1.24]{vdHHKR} conjectured that for every graph and
@@ -194,24 +211,6 @@ an odd cycle of length $j$ is unstable when $\alpha>\sec^2(\pi/(2j))$ \cite[Theo
 alternating perturbation of \cite[Lemma~2]{HHK}. \Cref{thm:main} answers the second question for equal rates, except at $\alpha=4/3$.
 Holmes and Kleptsyn \cite[Section~1.4, Question~1]{HK} asked what can be said about the equilibria on finite graphs
 for $\alpha<2$; parts~(b) and~(c) of \Cref{thm:det} answer part of this question for equal rates.
-
-Below $17/4$ the bound $a_e>3/2$ below is not available; for $2<\alpha\le 6$
-\Cref{lem:count,lem:depth,lem:branch} need only $a_e>1$ (\Cref{lem:hk}). Kriebel's proof for
-$\alpha\ge 17/4$ shows that an edge neither of whose endpoints is a leaf has weight greater than $3/2$, by exact
-interval estimates for $17/4\le\alpha\le 7$ and a separate argument for $\alpha\ge 7$. Such an edge has a share
-greater than $1/2$ at both endpoints, so no two of them meet, and a tree of diameter at least four contains two that
-do \cite[Section~4]{Kr}.
-
-Let $2<\alpha\le 6$. Two edges $e,f$ of the support at a
-common vertex $v$ satisfy $q_{f,v}/q_{e,v}=(a_f/a_e)^\alpha$. If $f$ joins $v$ to a leaf and $e$ has
-a share at least $1-1/\alpha$ at $v$, this relation gives $e$ a share greater than $1/2$ at its other endpoint
-(\Cref{lem:branch}). \Cref{lem:count} counts these shares over the edges and vertices of a tree (for a path, see
-\cite[Corollary~3]{HHK}). Either one edge has a share at least $1-1/\alpha$ at both endpoints, and every other edge
-has it at its endpoint farther from that edge; or one vertex has such a share of no edge, and every edge has it at
-its endpoint farther from that vertex. An edge with share at most $1/\alpha$ at one endpoint and at least
-$1-1/\alpha$ at the other has a leaf as that other endpoint (\Cref{lem:depth}). These three lemmas give that every
-tree component has diameter at most three when $2<\alpha\le 6$, and with Kriebel's theorem this covers every
-$\alpha>2$.
 
 \section{Equilibria and the Hessian form}\label{sec:prelim}
 
@@ -362,7 +361,7 @@ all positive, so $P>0$ on $[0,1/2]$.
 \end{proof}
 
 \begin{proof}[Proof of \Cref{thm:det}(a)]
-For $\alpha>6$ this is \cite[Theorem~1(2)]{Kr}. Let $2<\alpha\le 6$ and let $T$ be a component of the
+For $\alpha>25$ this is \cite[Theorem~2(a)]{HK}, and for $\alpha\ge17/4$ it is \cite[Section~4]{Kr}. Let $2<\alpha\le 6$ and let $T$ be a component of the
 support; it is a tree by \Cref{lem:hk}. In case~(I) of \Cref{lem:count}, let $e_0=xx'$ be the edge that is high at both endpoints. Any
 other edge $f=xz$ at $x$ has $q_{f,x}\le 1-h=1/\alpha$ and is high at $z$, so $z$ is a leaf by \Cref{lem:depth}; the
 same holds at $x'$, and $T$ has diameter at most three. In case~(II), root $T$ at $r$. An edge $vz$ with $v$ at depth
