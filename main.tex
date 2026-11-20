@@ -156,9 +156,9 @@ Consider the equal-rate WARM flow \eqref{eq:flow} on a finite simple graph.
 \end{theorem}
 
 For $2<\alpha\le 6$ the proof of \Cref{thm:det}(a) uses \cite[Theorem~3, Lemma~4]{HK} and the argument of
-\cite[Proposition~9]{HHK}. For $\alpha>6$ the whisker conclusion rests on \cite{Kr}: on the row
-$6\le\alpha\le 7$ of the table in \cite[Section~4.1]{Kr}, on \cite[Section~4.2]{Kr} for $\alpha\ge 7$, and on
-\cite[Section~4.3]{Kr}; for $\alpha>25$ it is also \cite[Theorem~2(a)]{HK}.
+\cite[Proposition~9]{HHK}. For $\alpha>6$ the whisker conclusion is Kriebel's: for $6<\alpha\le 7$ it is the
+last row of the table in \cite[Section~4.1]{Kr}, and for $\alpha\ge 7$ it is proved in Sections~4.2 and~4.3
+of \cite{Kr}. For $\alpha>25$ it is also \cite[Theorem~2(a)]{HK}.
 
 Van der Hofstad, Holmes, Kuznetsov and Ruszel \cite[Conjecture~1.24]{vdHHKR} conjectured that for every graph and
 $\alpha$ large enough depending on the graph, the linearly stable equilibria of the flow are supported on forests
@@ -376,9 +376,9 @@ $T$ we put
 The two lemmas below concern an edge $e=cx$ of $T$ such that $c$ has another edge of the support and $x$ has a leaf
 neighbour $y$ in $T$. Write $\ell=xy$ and
 \[
-  p=q_{e,x},\qquad s=q_{e,c},\qquad z=q_{\ell,x}.
+  p=q_{e,x},\qquad s=q_{e,c},\qquad \theta=q_{\ell,x}.
 \]
-Then $q_{\ell,y}=1$, so $a_{\ell}=1+z$; also $a_e=p+s$, $p/z=(a_e/a_{\ell})^\alpha$, $p+z\le 1$, and $s<1$ because $c$ has
+Then $q_{\ell,y}=1$, so $a_{\ell}=1+\theta$; also $a_e=p+s$, $p/\theta=(a_e/a_{\ell})^\alpha$, $p+\theta\le 1$, and $s<1$ because $c$ has
 another edge of the support.
 
 \begin{lemma}\label{lem:B}
@@ -387,12 +387,12 @@ let $p=q_{e,x}$. If $1<\alpha\le 2$, then $p<1/2$.
 \end{lemma}
 
 \begin{proof}
-Suppose $p\ge 1/2$, so $z\le 1-p$. From $p/z=((p+s)/(1+z))^\alpha$,
+Suppose $p\ge 1/2$, so $\theta\le 1-p$. From $p/\theta=((p+s)/(1+\theta))^\alpha$,
 \[
-  p+s=p^{1/\alpha}(1+z)z^{-1/\alpha}.
+  p+s=p^{1/\alpha}(1+\theta)\theta^{-1/\alpha}.
 \]
-The function $z\mapsto(1+z)z^{-1/\alpha}$ is decreasing on $(0,1)$, since its logarithmic derivative
-$\frac1{1+z}-\frac1{\alpha z}$ is negative when $(\alpha-1)z<1$. Hence
+The function $\theta\mapsto(1+\theta)\theta^{-1/\alpha}$ is decreasing on $(0,1)$, since its logarithmic derivative
+$\frac1{1+\theta}-\frac1{\alpha \theta}$ is negative when $(\alpha-1)\theta<1$. Hence
 \[
   p+s\ \ge\ (2-p)\Bigl(\frac p{1-p}\Bigr)^{1/\alpha}\ \ge\ (2-p)\Bigl(\frac p{1-p}\Bigr)^{1/2},
 \]
@@ -408,9 +408,9 @@ $\alpha\ge 4/3$, then $d_e(c)>0$.
 \begin{proof}
 If $s\le p$, then $a_e=p+s\le 2p\le 1<a_{\ell}$, so $a_e/a_{\ell}<1$ and, since $\alpha>1$,
 \[
-  \frac pz=\Bigl(\frac{a_e}{a_{\ell}}\Bigr)^\alpha<\frac{a_e}{a_{\ell}}\le\frac{2p}{1+z},
+  \frac p\theta =\Bigl(\frac{a_e}{a_{\ell}}\Bigr)^\alpha<\frac{a_e}{a_{\ell}}\le\frac{2p}{1+\theta},
 \]
-which gives $z>1$, impossible. Hence $s>p$, and for $\alpha\ge 4/3$
+which gives $\theta>1$, impossible. Hence $s>p$, and for $\alpha\ge 4/3$
 \[
   (\alpha-1)(p+s)>2(\alpha-1)p\ \ge\ \frac\alpha2\,p\ \ge\ \alpha p^2,\qquad\text{hence}\qquad
   d_e(c)=(\alpha-1)(p+s)-\alpha p^2>0,
@@ -494,7 +494,7 @@ $m\ge 3$. So every component is a tree, and hence a star by \Cref{thm:det}(b).
 
 \begin{remark}
 The proofs of \Cref{lem:count,lem:depth,lem:branch,lem:A,lem:B} use equal rates in two places: through the
-normalization $\sum_{e\ni v}q_{e,v}=1$ with a common constant at every vertex, and through $a_{\ell}=1+z$ at a leaf
+normalization $\sum_{e\ni v}q_{e,v}=1$ with a common constant at every vertex, and through $a_{\ell}=1+\theta$ at a leaf
 edge.
 \end{remark}
 
@@ -562,7 +562,7 @@ $e_0$ & the edge of $T$ that is high at both endpoints, in case (I) & \Cref{lem:
 $\lambda$, $t$, $b$ & $q_{e,x}$, $1-q_{e,y}$, $q_{f,y}$ for $e=xy$ and $f\ni y$ & \Cref{sec:large}\\
 $d_e(v)$ & $(\alpha-1)a_e-\alpha q_{e,x}^2$ for $e=vx$ & \Cref{sec:small}\\
 $c$, $x$, $y$, $\ell$ & edge $e=cx$, leaf $y$ adjacent to $x$, leaf edge $\ell=xy$ & \Cref{sec:small}\\
-$p$, $s$, $z$ & $q_{e,x}$, $q_{e,c}$, $q_{\ell,x}$ & \Cref{sec:intro}, \Cref{sec:small}\\
+$p$, $s$, $\theta$ & $q_{e,x}$, $q_{e,c}$, $q_{\ell,x}$ & \Cref{sec:intro}, \Cref{sec:small}\\
 $D$ & diameter of a tree component & \Cref{sec:small}\\
 \end{tabular}
 \end{center}
