@@ -50,7 +50,7 @@ $v$ fires, an edge $e\ni v$ is chosen with probability
 \[
   \frac{N_t(e)^\alpha}{\sum_{f\ni v}N_t(f)^\alpha}
 \]
-and its count is increased by one. This is the WARM model with equal firing rates and power reinforcement. It was introduced, for general
+and its count is increased by one. This is the WARM ($(W,A)$-reinforcement model) with equal firing rates and power reinforcement. It was introduced, for general
 rates and a general reinforcement function, by van der Hofstad, Holmes, Kuznetsov and Ruszel \cite{vdHHKR}, as a
 model for the way neurons select among connections. Write
 \[
@@ -540,18 +540,24 @@ $J$ & block of $DF(a)$ on $\supp a$ & \Cref{sec:prelim}\\
 $L$, $H$ & Lyapunov function and its Hessian & \Cref{sec:prelim}\\
 $u$, $w$ & test vector and $w_e=a_eu_e$ & \Cref{lem:Q}\\
 $y_0\cdots y_{k+1}$, $g_i$ & path in a tree component and its edges $g_i=y_{i-1}y_i$ & \Cref{sec:intro}, \Cref{lem:path}\\
+$k$ & inner vertices of that path; edges of a star & \Cref{sec:intro}\\
+$m$ & length of a cycle; number of edges of $T$ & \Cref{sec:intro}, \Cref{lem:count}\\
 $C$ & a component of the support & \Cref{sec:prelim}\\
 $Q(u)$ & Hessian form in the variables $u_e=w_e/a_e$ & \Cref{lem:Q}\\
 $h$ & $1-1/\alpha$, threshold for a high incidence & \Cref{sec:large}\\
 $\eta$ & number of high incidences of a tree component & \Cref{lem:count}\\
 $T$ & a tree component of the support & \Cref{lem:count}\\
 $r$ & the vertex of $T$ that is high for no edge, in case (II) & \Cref{lem:count}\\
+$e_0$ & the edge of $T$ that is high at both endpoints, in case (I) & \Cref{lem:count}\\
+$\lambda$, $t$, $b$ & $q_{e,x}$, $1-q_{e,y}$, $q_{f,y}$ for $e=xy$ and $f\ni y$ & \Cref{sec:large}\\
 $d_e(v)$ & $(\alpha-1)a_e-\alpha q_{e,x}^2$ for $e=vx$ & \Cref{sec:small}\\
-$p$, $s$, $q$ & $q_{e,x}$, $q_{e,c}$, $q_{l,x}$ for $e=cx$ and leaf edge $l=xy$ & \Cref{sec:intro}, \Cref{sec:small}\\
+$c$, $x$, $y$, $l$ & edge $e=cx$, leaf $y$ adjacent to $x$, leaf edge $l=xy$ & \Cref{sec:small}\\
+$p$, $s$, $q$ & $q_{e,x}$, $q_{e,c}$, $q_{l,x}$ & \Cref{sec:intro}, \Cref{sec:small}\\
+$D$ & diameter of a tree component & \Cref{sec:small}\\
 \end{tabular}
 \end{center}
 
-Letters used inside a single proof ($b$, $\lambda$, $\tau$, $\varphi$, $P$, $\sigma$, and $A$, $B$ in the example of
+Letters used inside a single proof ($\tau$, $\varphi$, $P$, $\sigma$, and $A$, $B$ in the example of
 \Cref{sec:small}) are defined there and are not listed.
 
 \begin{thebibliography}{99}
