@@ -209,8 +209,8 @@ At an equilibrium, for $u\in\mathbb R^{\supp a}$ and $w_e=a_eu_e$,
 \[
   \langle w,Hw\rangle=Q(u)=\sum_v\Bigl[(\alpha-1)\sum_{e\ni v}q_{e,v}u_e^2-\alpha\Bigl(\sum_{e\ni v}q_{e,v}u_e\Bigr)^2\Bigr],
 \]
-the sums running over edges of the support; this is the form $Q$ of \Cref{sec:intro}. In particular, if $Q(u)>0$
-for some $u$, the equilibrium is unstable.
+the sums running over edges of the support. We call $u$ a \emph{test vector}. In particular, if $Q(u)>0$ for
+some test vector $u$, the equilibrium is unstable.
 \end{lemma}
 
 \begin{proof}
@@ -538,14 +538,14 @@ $q_{e,v}$ & share $a_e^\alpha/S_v(a)$ of edge $e$ at vertex $v$ & \Cref{sec:intr
 $DF(a)$ & Jacobian; linearly stable, semistable, unstable & \Cref{sec:intro}\\
 $J$ & block of $DF(a)$ on $\supp a$ & \Cref{sec:prelim}\\
 $L$, $H$ & Lyapunov function and its Hessian & \Cref{sec:prelim}\\
-$u$, $w$ & test vector and $w_e=a_eu_e$ & \Cref{sec:intro}, \Cref{lem:Q}\\
+$u$, $w$ & test vector and $w_e=a_eu_e$ & \Cref{lem:Q}\\
 $y_0\cdots y_{k+1}$, $g_i$ & path in a tree component and its edges $g_i=y_{i-1}y_i$ & \Cref{sec:intro}, \Cref{lem:path}\\
 $C$ & a component of the support & \Cref{sec:prelim}\\
-$Q(u)$ & Hessian form in the variables $u_e=w_e/a_e$ & \Cref{sec:intro}, \Cref{lem:Q}\\
+$Q(u)$ & Hessian form in the variables $u_e=w_e/a_e$ & \Cref{lem:Q}\\
 $h$ & $1-1/\alpha$, threshold for a high incidence & \Cref{sec:large}\\
 $\eta$ & number of high incidences of a tree component & \Cref{lem:count}\\
 $T$ & a tree component of the support & \Cref{lem:count}\\
-$r$ & the vertex of $T$ that is high for no edge, in case (II) & \Cref{sec:intro}, \Cref{lem:count}\\
+$r$ & the vertex of $T$ that is high for no edge, in case (II) & \Cref{lem:count}\\
 $d_e(v)$ & $(\alpha-1)a_e-\alpha q_{e,x}^2$ for $e=vx$ & \Cref{sec:small}\\
 $p$, $s$, $q$ & $q_{e,x}$, $q_{e,c}$, $q_{l,x}$ for $e=cx$ and leaf edge $l=xy$ & \Cref{sec:intro}, \Cref{sec:small}\\
 \end{tabular}
@@ -603,7 +603,7 @@ Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026.
 R.~van der Hofstad, M.~Holmes, A.~Kuznetsov and W.~Ruszel,
 \emph{Strongly reinforced P\'olya urns with graph-based competition},
 Ann.\ Appl.\ Probab.\ \textbf{26} (2016), 2494--2539.
-\doi{10.1214/16-AAP1153}.
+\doi{10.1214/16-AAP1153}
 
 \end{thebibliography}
 
