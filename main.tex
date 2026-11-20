@@ -86,7 +86,7 @@ semistable equilibrium, and with positive probability to any given linearly stab
 therefore to describe the support of a semistable equilibrium. A \emph{component} of the support is a connected
 component, with at least one edge, of the graph $(V,\supp a)$. With equal rates, Holmes and Kleptsyn
 \cite[Theorem~2(a)]{HK} proved that for $\alpha>25$ every component of this support is a whisker, and Kriebel
-\cite[Section~4]{Kr} proved this for $\alpha\ge 17/4$; with unequal rates the conclusion is false in general
+\cite[Theorem~1(2)]{Kr} proved this for $\alpha\ge 17/4$; with unequal rates the conclusion is false in general
 \cite[Example~1]{HK}. Kriebel also proved that for $\alpha>4/3$ the support of a semistable equilibrium is a forest
 \cite[Theorem~3]{Kr}. On the triangle the equilibrium with equal weights is linearly stable if and only if
 $\alpha<4/3$ \cite[Theorem~3.8]{vdHHKR}, so for $1<\alpha<4/3$ the support of a semistable equilibrium need not
@@ -150,7 +150,11 @@ star with $n$ edges the equilibrium with equal weights is linearly stable \cite[
 it is the limit with positive probability.
 
 \Cref{thm:main} follows from the results quoted above and \Cref{thm:det} below; the deduction is in
-\Cref{sec:stoch}, and \Cref{thm:det} is proved in \Cref{sec:large,sec:small}.
+\Cref{sec:stoch}, and \Cref{thm:det} is proved in \Cref{sec:large,sec:small}. Two ranges of \Cref{thm:main} rest on
+Kriebel's preprint \cite{Kr}: for $4/3<\alpha\le2$ the proof uses his forest theorem \cite[Theorem~3]{Kr}, and for
+$6<\alpha\le25$ his whisker theorem \cite[Theorem~1(2)]{Kr}. The whisker conclusion for $2<\alpha\le6$ and for
+$\alpha>25$, and the star conclusion for tree components when $4/3\le\alpha\le2$, rest on \Cref{thm:det} and published
+results.
 
 \begin{theorem}\label{thm:det}
 Consider the equal-rate WARM flow \eqref{eq:flow} on a finite simple graph.
@@ -162,7 +166,7 @@ Consider the equal-rate WARM flow \eqref{eq:flow} on a finite simple graph.
 \end{theorem}
 
 For $2<\alpha\le 6$ the proof of \Cref{thm:det}(a) uses \cite[Theorem~3, Lemma~4]{HK} and the argument of
-\cite[Proposition~9]{HHK}. For $\alpha>6$ the whisker conclusion is Kriebel's \cite[Sections~4.1--4.3]{Kr}, and
+\cite[Proposition~9]{HHK}. For $\alpha>6$ the whisker conclusion is Kriebel's \cite[Theorem~1(2)]{Kr}, and
 for $\alpha>25$ it is also \cite[Theorem~2(a)]{HK}.
 
 Van der Hofstad, Holmes, Kuznetsov and Ruszel \cite[Conjecture~1.24]{vdHHKR} conjectured that for every graph and
@@ -354,7 +358,7 @@ all positive, so $P>0$ on $[0,1/2]$.
 \end{proof}
 
 \begin{proof}[Proof of \Cref{thm:det}(a)]
-For $\alpha\ge 17/4$ this is \cite[Section~4.3]{Kr}. Let $2<\alpha\le 6$ and let $T$ be a component of the
+For $\alpha>6$ this is \cite[Theorem~1(2)]{Kr}. Let $2<\alpha\le 6$ and let $T$ be a component of the
 support; it is a tree by \Cref{lem:hk}. In case~(I) of \Cref{lem:count}, let $e_0=xx'$ be the edge that is high at both endpoints. Any
 other edge $f=xz$ at $x$ has $q_{f,x}\le 1-h=1/\alpha$ and is high at $z$, so $z$ is a leaf by \Cref{lem:depth}; the
 same holds at $x'$, and $T$ has diameter at most three. In case~(II), root $T$ at $r$. An edge $vz$ with $v$ at depth
