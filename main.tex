@@ -30,15 +30,13 @@ Givat Ram, Jerusalem, Israel}
 \maketitle
 
 \begin{abstract}
-In the WARM model of van der Hofstad, Holmes, Kuznetsov and Ruszel on a finite graph, each vertex fires at Poisson times and reinforces one incident edge, chosen
+In the WARM model of van der Hofstad, Holmes, Kuznetsov and Ruszel on a finite graph, each vertex fires at the times of a Poisson process and reinforces one incident edge, chosen
 with probability proportional to the $\alpha$-th power of its count. Results of Holmes and Kleptsyn and of Hirsch, Holmes and
 Kleptsyn show that with equal firing rates and $\alpha>25$ the infinitely reinforced edges form whiskers, trees of diameter at most three, and
 Kriebel lowered the threshold to $17/4$. We prove the same conclusion for every $\alpha>4/3$, and show that for
-$4/3<\alpha\le 2$ every component is a star. The constant cannot be lowered, since for $\alpha<4/3$ the triangle keeps
-all three edges with positive probability. This answers the whisker problem of Kleptsyn and of Aletti et al., except
-at $\alpha=4/3$. For $\alpha\le 2$ the proof shows that an equilibrium of the associated flow whose support has a
-tree component of diameter at least four is linearly unstable, in a direction supported on a path of that component
-with signs alternating along the path.
+$4/3<\alpha\le 2$ every component is a star. The constant cannot be lowered, since for $\alpha<4/3$ all three edges of the
+triangle are infinitely reinforced with positive probability. This answers the whisker problem of Kleptsyn and of Aletti et al., except
+at $\alpha=4/3$.
 \end{abstract}
 
 \noindent\textit{Mathematics Subject Classification (2020):} 60K35, 37C75.\\
@@ -47,8 +45,8 @@ with signs alternating along the path.
 \section{Introduction}\label{sec:intro}
 
 Let $G=(V,E)$ be a finite simple graph and $\alpha>1$. Each edge $e$ carries a count $N_t(e)$, with
-$N_0(e)\in\{1,2,\dots\}$. Each non-isolated vertex carries an independent Poisson clock of rate one, and when the
-clock of $v$ rings, an edge $e\ni v$ is chosen with probability
+$N_0(e)\in\{1,2,\dots\}$. Each non-isolated vertex fires at the times of an independent Poisson process of rate one, and when
+$v$ fires, an edge $e\ni v$ is chosen with probability
 \[
   \frac{N_t(e)^\alpha}{\sum_{f\ni v}N_t(f)^\alpha}
 \]
@@ -56,8 +54,9 @@ and its count is increased by one. This is the WARM model with equal firing rate
 rates and a general reinforcement function, by van der Hofstad, Holmes, Kuznetsov and Ruszel \cite{vdHHKR}, as a
 model for the way neurons select among connections. Write
 \[
-  E_\infty=\{e\in E:\ N_t(e)\to\infty\}.
+  E_\infty=\{e\in E:\ N_t(e)\to\infty\},
 \]
+the set of infinitely reinforced edges.
 A \emph{whisker} is a tree of diameter at most three, and a \emph{star} is a tree of diameter at most two (a single
 edge included).
 
@@ -89,19 +88,19 @@ For $\alpha>2$ the argument rests on the diagonal condition of Holmes and Klepts
 \cite[Lemma~3]{HHK}: at
 a semistable equilibrium every edge $e=xy$ of the support satisfies
 $q_{e,x}^2+q_{e,y}^2\ge(1-1/\alpha)(q_{e,x}+q_{e,y})$, and so $\max(q_{e,x},q_{e,y})\ge 1-1/\alpha$. Since
-$1-1/\alpha>1/2$, a vertex holds a share at least $1-1/\alpha$ of at most one edge, and this orients the edges
-of a tree component. For $2<\alpha\le 6$ we extend to trees the argument that Hirsch, Holmes and Kleptsyn give
+$1-1/\alpha>1/2$, a vertex holds a share at least $1-1/\alpha$ of at most one edge. Direct each edge of a tree component towards
+an endpoint at which its share is at least $1-1/\alpha$; \Cref{lem:count} describes the two shapes this takes. For $2<\alpha\le 6$ we extend to trees the argument that Hirsch, Holmes and Kleptsyn give
 for paths \cite[Proposition~9, Corollary~3 and Lemma~4]{HHK}: the orientation, together with the relation
 $q_{f,v}/q_{e,v}=(a_f/a_e)^\alpha$ between two edges $e,f$ of the support at a common vertex $v$, bounds the share
 of $e$ at its other endpoint when $v$ is adjacent to a leaf; the proof of \cite[Section~4]{Kr} bounds weights
 instead. For
-$\alpha\le 2$ the bound $1-1/\alpha$ is at most $1/2$, a vertex can hold such a share of two edges, and the
-orientation is lost. By the Lyapunov function of \cite{vdHHKR}, in the form of \cite[Lemmas~1 and~2]{HK}, an
+$\alpha\le 2$ the bound $1-1/\alpha$ is at most $1/2$, a vertex can hold such a share of two edges, and this
+argument is not available. By the Lyapunov function of \cite{vdHHKR}, in the form of \cite[Lemmas~1 and~2]{HK}, an
 equilibrium is unstable as soon as
 \[
   Q(u)=\sum_v\Bigl[(\alpha-1)\sum_{e\ni v}q_{e,v}u_e^2-\alpha\Bigl(\sum_{e\ni v}q_{e,v}u_e\Bigr)^2\Bigr]>0
 \]
-for some vector $u$ on the support (\Cref{lem:Q}); the diagonal condition is the inequality $Q(u)\le 0$ for the
+for some vector $u$ on the support, a test vector (\Cref{lem:Q}); the diagonal condition is the inequality $Q(u)\le 0$ for the
 indicator $u$ of one edge. We evaluate $Q$ on a vector $u$ supported on a path $y_0y_1\cdots y_{k+1}$
 of a tree component, with edges $g_i=y_{i-1}y_i$, $u_{g_1}=1$ and
 $q_{g_i,y_i}u_{g_i}+q_{g_{i+1},y_i}u_{g_{i+1}}=0$ for $1\le i\le k$. The negative terms of $Q(u)$ then vanish at
@@ -121,7 +120,7 @@ contradicts itself; no equilibrium with $1<\alpha\le 2$ has such a component.
 
 Van der Hofstad, Holmes, Kuznetsov and Ruszel \cite[Conjecture~2]{vdHHKR} conjectured that for every graph and
 $\alpha$ large enough depending on the graph, the linearly stable equilibria of the associated flow are supported on
-whisker forests. They proved that for the triangle the equilibrium with equal weights is linearly stable if and only if
+forests whose components are whiskers. They proved that for the triangle the equilibrium with equal weights is linearly stable if and only if
 $\alpha<4/3$ \cite[Proposition~2(v)]{vdHHKR}, and that for $\alpha>4/3$ every linearly stable equilibrium of the
 triangle has a zero coordinate \cite[Theorem~4(ii)]{vdHHKR}. Holmes and Kleptsyn \cite{HK} proved that for
 $\alpha>2$, with arbitrary positive rates, every semistable equilibrium is supported on a forest
@@ -157,7 +156,7 @@ $\alpha\le 2$, then almost surely every such component is a star.
 
 The constant $4/3$ is best possible. For $1<\alpha<4/3$ the equilibrium of the triangle with equal weights is
 linearly stable \cite[Proposition~2(v)]{vdHHKR}. By \cite[Theorem~1]{HHK} the process started from unit counts
-converges to it with positive probability, so all three edges of the triangle survive with positive probability
+converges to it with positive probability, so all three edges of the triangle are in $E_\infty$ with positive probability
 \cite[Theorem~1]{Kr}. At $\alpha=4/3$ that
 equilibrium has eigenvalues $-1,0,0$, and the question remains open. Stars do occur for $4/3<\alpha\le 2$: on the
 star with $k$ edges the equilibrium with equal weights is linearly stable \cite[Proposition~2(iii)]{vdHHKR} (see \Cref{rem:star}), so from unit initial counts
@@ -171,7 +170,7 @@ Consider the equal-rate WARM flow \eqref{eq:flow} on a finite simple graph.
 \begin{enumerate}[label=(\alph*)]
 \item If $\alpha>2$, every component of the support of a semistable equilibrium is a whisker.
 \item If $4/3\le\alpha\le 2$, every component of the support of a semistable equilibrium that is a tree is a star.
-\item If $1<\alpha\le 2$, no equilibrium has a support component that is a tree of diameter three.
+\item If $1<\alpha\le 2$, no equilibrium has a component of the support that is a tree of diameter three.
 \end{enumerate}
 \end{theorem}
 
@@ -184,7 +183,8 @@ and $q_{e,y}\ge 1-1/\alpha$, then $y$ is a leaf of the support (\Cref{lem:depth}
 $q_{e,v}\ge 1-1/\alpha$, and $v$ is adjacent to a leaf, then $q_{e,r}>1/2$ (\Cref{lem:branch}). Part~(a) for
 $2<\alpha\le 6$ follows from these three statements. Kriebel's proof for $\alpha\ge 17/4$ \cite[Section~4]{Kr}
 shows instead that an edge neither of whose endpoints is a leaf of the support has weight greater than $3/2$, by
-exact interval estimates on $[17/4,7]$; \Cref{lem:depth,lem:branch} bound no weight.
+exact interval estimates on $[17/4,7]$. That weight bound is the step proved only from $17/4$ on;
+\Cref{lem:depth,lem:branch} bound no weight, and the proof of part~(a) does not use it.
 
 For $\alpha\le 2$ the vector $u$ of \Cref{lem:path} is the alternating perturbation of \cite[Lemma~2]{HHK}
 on a path instead of an even cycle; on a cycle there are no end terms. Part~(c) extends \cite[Proposition~10(i)]{HHK}
@@ -216,9 +216,10 @@ $u_e=w_e/a_e$.
 \begin{lemma}\label{lem:Q}
 At an equilibrium, for $u\in\mathbb R^{\supp a}$ and $w_e=a_eu_e$,
 \[
-  \langle w,Hw\rangle=Q(u):=\sum_v\Bigl[(\alpha-1)\sum_{e\ni v}q_{e,v}u_e^2-\alpha\Bigl(\sum_{e\ni v}q_{e,v}u_e\Bigr)^2\Bigr],
+  \langle w,Hw\rangle=Q(u)=\sum_v\Bigl[(\alpha-1)\sum_{e\ni v}q_{e,v}u_e^2-\alpha\Bigl(\sum_{e\ni v}q_{e,v}u_e\Bigr)^2\Bigr],
 \]
-the sums running over edges of the support. In particular, if $Q(u)>0$ for some $u$, the equilibrium is unstable.
+the sums running over edges of the support; this is the form $Q$ of \Cref{sec:intro}. In particular, if $Q(u)>0$
+for some $u$, the equilibrium is unstable. A vector $u$ on which $Q$ is evaluated is called a test vector.
 \end{lemma}
 
 \begin{proof}
@@ -230,8 +231,7 @@ Differentiating $\partial_eL=-1+\sum_{v\in e}a_e^{\alpha-1}/S_v$ gives
 and substituting $w_e=a_eu_e$ gives the formula.
 \end{proof}
 
-For an edge $e=xy$ of the support of a semistable equilibrium, taking for $u$ in \Cref{lem:Q} the indicator of $e$ (a vector $u$ used in this way is
-called a test vector) gives
+For an edge $e=xy$ of the support of a semistable equilibrium, taking for $u$ in \Cref{lem:Q} the indicator of $e$ gives
 $Q\le 0$, that is,
 \begin{equation}\label{eq:diag}
   q_{e,x}^2+q_{e,y}^2\ \ge\ \Bigl(1-\frac1\alpha\Bigr)\bigl(q_{e,x}+q_{e,y}\bigr),
@@ -255,18 +255,20 @@ supported in $C$ sees only $C$. It therefore suffices to consider one component.
 \section{\texorpdfstring{The range $\alpha>2$}{The range alpha > 2}}\label{sec:large}
 
 Throughout this section $\alpha>2$, the equilibrium is semistable, and $h=1-1/\alpha\in(1/2,1)$. We say that the
-incidence $(e,v)$ is \emph{high} if $q_{e,v}\ge h$. By \eqref{eq:diag} every support edge has a high endpoint, and
+incidence $(e,v)$ is \emph{high} if $q_{e,v}\ge h$; we then say that $e$ is high at $v$ and that $v$ is high
+for $e$. By \eqref{eq:diag} every edge of the support has a high endpoint, and
 since $h>1/2$ and $\sum_{e\ni v}q_{e,v}=1$, no vertex is high for two edges.
 
 The following two facts are due to Holmes and Kleptsyn. For equal rates both follow from the diagonal
 condition \eqref{eq:diag} alone, by comparing an edge of least weight with its neighbours.
 
 \begin{lemma}[{\cite[Theorem~3, Lemma~4]{HK}; see also \cite[Lemma~4]{Kr}}]\label{lem:hk}
-Let $\alpha>2$. Every component of the support is a tree, and every support edge has weight $a_e>1$.
+Let $\alpha>2$. Every component of the support is a tree, and every edge of the support has weight $a_e>1$.
 \end{lemma}
 
 \begin{proof}
-If a component contains a cycle, let $e=xy$ be an edge of least weight on it. Both $x$ and $y$ carry another cycle
+We repeat the short proof, which for equal rates gives the strict inequality $a_e>1$;
+\cite[Lemma~4]{Kr} states $a_e\ge 1$. If a component contains a cycle, let $e=xy$ be an edge of least weight on it. Both $x$ and $y$ carry another cycle
 edge of weight at least $a_e$, so $q_{e,x},q_{e,y}\le 1/2<h$, contradicting \eqref{eq:diag}. In a tree component
 with at least two edges, the same argument shows that an edge of least weight has a leaf endpoint, where its
 share is $1$; its other share is positive, so its weight exceeds one, and so does every weight in the
@@ -291,11 +293,11 @@ $r$ gives the orientation in~(II).
 \end{proof}
 
 \begin{lemma}\label{lem:depth}
-Let $e=xy$ be a support edge with $q_{e,x}\le 1/\alpha$ and $q_{e,y}\ge h$. Then $y$ is a leaf of the support.
+Let $e=xy$ be an edge of the support with $q_{e,x}\le 1/\alpha$ and $q_{e,y}\ge h$. Then $y$ is a leaf of the support.
 \end{lemma}
 
 \begin{proof}
-Suppose $y$ has another support edge $f$. Put $\lambda=q_{e,x}$, $t=1-q_{e,y}\in(0,1/\alpha]$ and $b=q_{f,y}\le t$.
+Suppose $y$ has another edge of the support $f$. Put $\lambda=q_{e,x}$, $t=1-q_{e,y}\in(0,1/\alpha]$ and $b=q_{f,y}\le t$.
 At $y$ we have $b/(1-t)=(a_f/a_e)^\alpha$, and $a_f>1$ by \Cref{lem:hk}, so
 $a_e>\bigl((1-t)/t\bigr)^{1/\alpha}$. Since $a_e=\lambda+1-t$,
 \[
@@ -321,7 +323,7 @@ $2<\alpha\le 7$ through the inequality (29) there. Here $v$ may carry several ed
 range $\alpha\le 6$ the estimate is reduced to the sign of one polynomial with rational Bernstein coefficients.
 
 \begin{lemma}\label{lem:branch}
-Let $2<\alpha\le 6$. Let $e=rv$ be a support edge with $q_{e,v}\ge h$, and suppose $v$ has a support edge $f=vy$
+Let $2<\alpha\le 6$. Let $e=rv$ be an edge of the support with $q_{e,v}\ge h$, and suppose $v$ has an edge of the support $f=vy$
 with $y$ a leaf. Then $q_{e,r}>1/2$.
 \end{lemma}
 
@@ -348,7 +350,7 @@ all positive, so $P>0$ on $[0,1/2]$.
 
 \begin{proof}[Proof of \Cref{thm:det}(a)]
 For $\alpha\ge 17/4$ this is \cite[Section~4.3]{Kr}. Let $2<\alpha\le 6$ and let $T$ be a component of the
-support; it is a tree by \Cref{lem:hk}. In case~(I) of \Cref{lem:count}, let $e_0=xx'$ be the doubly high edge. Any
+support; it is a tree by \Cref{lem:hk}. In case~(I) of \Cref{lem:count}, let $e_0=xx'$ be the edge that is high at both endpoints. Any
 other edge $f=xz$ at $x$ has $q_{f,x}\le 1-h=1/\alpha$ and is high at $z$, so $z$ is a leaf by \Cref{lem:depth}; the
 same holds at $x'$, and $T$ has diameter at most three. In case~(II), root $T$ at $r$. An edge $vz$ with $v$ at depth
 one and $z$ at depth two is high at $z$, and $q_{vz,v}\le 1/\alpha$ because $v$ is high for the edge $rv$; so $z$ is a
@@ -371,16 +373,16 @@ $T$ we put
 \[
   d_e(v)=(\alpha-1)\,a_e-\alpha\,q_{e,x}^2 .
 \]
-The two lemmas below concern an edge $e=cx$ of $T$ such that $c$ has another support edge and $x$ has a leaf
+The two lemmas below concern an edge $e=cx$ of $T$ such that $c$ has another edge of the support and $x$ has a leaf
 neighbour $y$ in $T$. Write $l=xy$ and
 \[
   p=q_{e,x},\qquad s=q_{e,c},\qquad q=q_{l,x}.
 \]
 Then $q_{l,y}=1$, so $a_l=1+q$; also $a_e=p+s$, $p/q=(a_e/a_l)^\alpha$, $p+q\le 1$, and $s<1$ because $c$ has
-another support edge.
+another edge of the support.
 
 \begin{lemma}\label{lem:B}
-Let $e=cx$ be an edge of $T$ such that $c$ has another support edge and $x$ is adjacent to a leaf $y$ of $T$, and
+Let $e=cx$ be an edge of $T$ such that $c$ has another edge of the support and $x$ is adjacent to a leaf $y$ of $T$, and
 let $p=q_{e,x}$. If $1<\alpha\le 2$, then $p<1/2$.
 \end{lemma}
 
