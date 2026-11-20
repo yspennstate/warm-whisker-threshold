@@ -36,8 +36,9 @@ Kleptsyn show that with equal firing rates and $\alpha>25$ the infinitely reinfo
 Kriebel lowered the threshold to $17/4$. We prove the same conclusion for every $\alpha>4/3$, and show that for
 $4/3<\alpha\le 2$ every component is a star. The constant cannot be lowered, since for $\alpha<4/3$ the triangle keeps
 all three edges with positive probability. This answers the whisker problem of Kleptsyn and of Aletti et al., except
-at $\alpha=4/3$. The proof for $\alpha\le 2$ uses a test vector supported on a path in a tree component of the
-support, with signs alternating along the path.
+at $\alpha=4/3$. For $\alpha\le 2$ the proof shows that an equilibrium of the associated flow whose support has a
+tree component of diameter at least four is linearly unstable, in a direction supported on a path of that component
+with signs alternating along the path.
 \end{abstract}
 
 \noindent\textit{Mathematics Subject Classification (2020):} 60K35, 37C75.\\
@@ -84,13 +85,16 @@ with equal rates almost surely every component is a whisker when $\alpha\ge 17/4
 of a semistable equilibrium is a forest \cite[Theorem~3]{Kr}. We prove that with equal rates and $\alpha>4/3$
 every component of the support of a semistable equilibrium is a whisker, and a star when $\alpha\le 2$.
 
-For $\alpha>2$ the argument rests on the diagonal condition of Holmes and Kleptsyn \cite[Proposition~1]{HK}: at
+For $\alpha>2$ the argument rests on the diagonal condition of Holmes and Kleptsyn \cite[(18)]{HK}, see also
+\cite[Lemma~3]{HHK}: at
 a semistable equilibrium every edge $e=xy$ of the support satisfies
 $q_{e,x}^2+q_{e,y}^2\ge(1-1/\alpha)(q_{e,x}+q_{e,y})$, and so $\max(q_{e,x},q_{e,y})\ge 1-1/\alpha$. Since
 $1-1/\alpha>1/2$, a vertex holds a share at least $1-1/\alpha$ of at most one edge, and this orients the edges
-of a tree component. For $2<\alpha\le 6$ we combine the orientation with the relation
-$q_{f,v}/q_{e,v}=(a_f/a_e)^\alpha$ between two edges $e,f$ of the support at a common vertex $v$, which bounds
-the share of $e$ at its other endpoint; the proof of \cite[Section~4]{Kr} bounds weights instead. For
+of a tree component. For $2<\alpha\le 6$ we extend to trees the argument that Hirsch, Holmes and Kleptsyn give
+for paths \cite[Proposition~9, Corollary~3 and Lemma~4]{HHK}: the orientation, together with the relation
+$q_{f,v}/q_{e,v}=(a_f/a_e)^\alpha$ between two edges $e,f$ of the support at a common vertex $v$, bounds the share
+of $e$ at its other endpoint when $v$ is adjacent to a leaf; the proof of \cite[Section~4]{Kr} bounds weights
+instead. For
 $\alpha\le 2$ the bound $1-1/\alpha$ is at most $1/2$, a vertex can hold such a share of two edges, and the
 orientation is lost. By the Lyapunov function of \cite{vdHHKR}, in the form of \cite[Lemmas~1 and~2]{HK}, an
 equilibrium is unstable as soon as
@@ -180,13 +184,13 @@ $2<\alpha\le 6$ follows from these three statements. Kriebel's proof for $\alpha
 shows instead that an edge neither of whose endpoints is a leaf of the support has weight greater than $3/2$, by
 exact interval estimates on $[17/4,7]$; \Cref{lem:depth,lem:branch} bound no weight.
 
-For $\alpha\le 2$ the vector $u$ of the second paragraph is the alternating perturbation of \cite[Lemma~2]{HHK}
+For $\alpha\le 2$ the vector $u$ of \Cref{lem:path} is the alternating perturbation of \cite[Lemma~2]{HHK}
 on a path instead of an even cycle; on a cycle there are no end terms. Part~(c) extends \cite[Proposition~10(i)]{HHK}
 from the path with three edges to all trees of diameter three, on the smaller range $\alpha\le 2$. For $\alpha>4/3$
 the tree hypothesis of part~(b) holds for every component, since the support of a semistable equilibrium is then a
 forest \cite[Theorem~3]{Kr}.
 
-For $2<\alpha\le 6$ the proof of \Cref{thm:det}(a) uses only \cite{HK}. For $6<\alpha\le 24$ the whisker conclusion
+For $2<\alpha\le 6$ the proof of \Cref{thm:det}(a) uses \cite{HK} and the argument of \cite[Proposition~9]{HHK}. For $6<\alpha\le 24$ the whisker conclusion
 rests on \cite{Kr} alone, and for $4/3<\alpha\le 2$ so does the forest property of the support; the passage from unit
 initial counts to arbitrary ones is \cite[Lemma~2]{Kr}.
 
@@ -224,12 +228,13 @@ Differentiating $\partial_eL=-1+\sum_{v\in e}a_e^{\alpha-1}/S_v$ gives
 and substituting $w_e=a_eu_e$ gives the formula.
 \end{proof}
 
-For an edge $e=xy$ of the support of a semistable equilibrium, taking for the test vector the indicator of $e$ gives
+For an edge $e=xy$ of the support of a semistable equilibrium, taking for $u$ in \Cref{lem:Q} the indicator of $e$ (a vector $u$ used in this way is
+called a test vector) gives
 $Q\le 0$, that is,
 \begin{equation}\label{eq:diag}
   q_{e,x}^2+q_{e,y}^2\ \ge\ \Bigl(1-\frac1\alpha\Bigr)\bigl(q_{e,x}+q_{e,y}\bigr),
 \end{equation}
-the diagonal condition of Holmes and Kleptsyn \cite[Proposition~1]{HK}; see also \cite[(5)]{Kr}. In particular
+the diagonal condition of Holmes and Kleptsyn \cite[(18)]{HK}; see also \cite[Lemma~3]{HHK} and \cite[(5)]{Kr}. In particular
 $\max(q_{e,x},q_{e,y})\ge 1-1/\alpha$.
 
 \begin{remark}\label{rem:star}
@@ -259,14 +264,14 @@ Let $\alpha>2$. Every component of the support is a tree, and every support edge
 \end{lemma}
 
 \begin{proof}
-If a component contains a cycle, let $e=uw$ be an edge of least weight on it. Both $u$ and $w$ carry another cycle
-edge of weight at least $a_e$, so $q_{e,u},q_{e,w}\le 1/2<h$, contradicting \eqref{eq:diag}. In a tree component
+If a component contains a cycle, let $e=xy$ be an edge of least weight on it. Both $x$ and $y$ carry another cycle
+edge of weight at least $a_e$, so $q_{e,x},q_{e,y}\le 1/2<h$, contradicting \eqref{eq:diag}. In a tree component
 with at least two edges, the same argument shows that an edge of least weight has a leaf endpoint, where its
 share is $1$; its other share is positive, so its weight exceeds one, and so does every weight in the
 component. A component with one edge has weight $2$.
 \end{proof}
 
-\begin{lemma}\label{lem:count}
+\begin{lemma}[{for a path compare \cite[Corollary~3]{HHK}}]\label{lem:count}
 Let $T$ be a component of the support, with $m$ edges. Then exactly one of the following holds.
 \begin{enumerate}[label=(\Roman*)]
 \item One edge of $T$ is high at both endpoints, and every other edge is high at its endpoint farther from that edge.
@@ -309,6 +314,10 @@ $\varphi'<0$ on $(0,1/\alpha]$.
 Hence $\varphi(t)\ge\varphi(1/\alpha)=\log(\alpha-1)>0$.
 \end{proof}
 
+For a path, \Cref{lem:branch} is \cite[Lemma~4]{HHK}, which Hirsch, Holmes and Kleptsyn prove for
+$2<\alpha\le 7$ through the inequality (29) there. Here $v$ may carry several edges besides $e$, and on the
+range $\alpha\le 6$ the estimate is reduced to the sign of one polynomial with rational Bernstein coefficients.
+
 \begin{lemma}\label{lem:branch}
 Let $2<\alpha\le 6$. Let $e=rv$ be a support edge with $q_{e,v}\ge h$, and suppose $v$ has a support edge $f=vy$
 with $y$ a leaf. Then $q_{e,r}>1/2$.
@@ -336,7 +345,7 @@ all positive, so $P>0$ on $[0,1/2]$.
 \end{proof}
 
 \begin{proof}[Proof of \Cref{thm:det}(a)]
-For $\alpha\ge 17/4$ this is \cite[Theorem~1(2) and Section~4]{Kr}. Let $2<\alpha\le 6$ and let $T$ be a component of the
+For $\alpha\ge 17/4$ this is \cite[Section~4.3]{Kr}. Let $2<\alpha\le 6$ and let $T$ be a component of the
 support; it is a tree by \Cref{lem:hk}. In case~(I) of \Cref{lem:count}, let $e_0=xx'$ be the doubly high edge. Any
 other edge $f=xz$ at $x$ has $q_{f,x}\le 1-h=1/\alpha$ and is high at $z$, so $z$ is a leaf by \Cref{lem:depth}; the
 same holds at $x'$, and $T$ has diameter at most three. In case~(II), root $T$ at $r$. An edge $vz$ with $v$ at depth
