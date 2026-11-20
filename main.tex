@@ -50,7 +50,9 @@ $v$ fires, an edge $e\ni v$ is chosen with probability
 \[
   \frac{N_t(e)^\alpha}{\sum_{f\ni v}N_t(f)^\alpha}
 \]
-and its count is increased by one. This is the WARM ($(W,A)$-reinforcement model) with equal firing rates and power reinforcement. It was introduced, for general
+and its count is increased by one. This is the WARM model with equal firing rates and power reinforcement; the name abbreviates the
+$(W,A)$-reinforcement model of \cite{vdHHKR}, after its reinforcement function and its random sets of competing
+colours. It was introduced, for general
 rates and a general reinforcement function, by van der Hofstad, Holmes, Kuznetsov and Ruszel \cite{vdHHKR}, as a
 model for the way neurons select among connections. Write
 \[
@@ -149,7 +151,7 @@ Van der Hofstad, Holmes, Kuznetsov and Ruszel \cite[Conjecture~2]{vdHHKR} conjec
 $\alpha$ large enough depending on the graph, the linearly stable equilibria of the flow are supported on forests
 whose components are whiskers. For the triangle they proved that the equilibrium with equal weights is linearly
 stable if and only if $\alpha<4/3$ \cite[Proposition~2(v)]{vdHHKR}, and that for $\alpha>4/3$ every linearly stable
-equilibrium has a zero coordinate \cite[Theorem~4(ii)]{vdHHKR}. Holmes and Kleptsyn proved that for $\alpha>2$, with
+equilibrium has a zero coordinate (their theorem on the triangle graph \cite{vdHHKR}). Holmes and Kleptsyn proved that for $\alpha>2$, with
 arbitrary positive rates, every semistable equilibrium is supported on a forest \cite[Theorem~3, Corollary~1]{HK}.
 Their whisker threshold $25$ does not depend on the graph, and Kriebel observes that the constants in their proof
 already give $\alpha>24$ \cite[Section~5]{Kr}. Hirsch, Holmes and Kleptsyn proved that from unit initial counts the
@@ -231,7 +233,7 @@ the diagonal condition of Holmes and Kleptsyn \cite[(18)]{HK}; see also \cite[Le
 $\max(q_{e,x},q_{e,y})\ge 1-1/\alpha$.
 
 \begin{remark}\label{rem:star}
-On the star with $k$ edges the equilibrium with equal weights has all weights $(k+1)/k$ in the present normalization \cite[Theorem~6(i)]{vdHHKR}.
+On the star with $k$ edges the equilibrium with equal weights has all weights $(k+1)/k$ in the present normalization (their theorem on star graphs \cite{vdHHKR}).
 For $k\ge 2$ it is linearly stable if and only if $\alpha<k+1$ \cite[Proposition~2(iii)]{vdHHKR}; for $\alpha\le 2$ this can also be
 read off \Cref{lem:Q}. Its centre gives each edge the share $1/k$ and each leaf gives its edge the share $1$, so
 $Q(u)=\bigl(\frac{\alpha-1}{k}-1\bigr)\sum_e u_e^2-\frac{\alpha}{k^2}\bigl(\sum_e u_e\bigr)^2$. For $k\ge 2$ and
@@ -538,7 +540,7 @@ $q_{e,v}$ & share $a_e^\alpha/S_v(a)$ of edge $e$ at vertex $v$ & \Cref{sec:intr
 $DF(a)$ & Jacobian; linearly stable, semistable, unstable & \Cref{sec:intro}\\
 $J$ & block of $DF(a)$ on $\supp a$ & \Cref{sec:prelim}\\
 $L$, $H$ & Lyapunov function and its Hessian & \Cref{sec:prelim}\\
-$u$, $w$ & test vector and $w_e=a_eu_e$ & \Cref{lem:Q}\\
+$u$, $w$ & test vector and $w_e=a_eu_e$ & \Cref{sec:intro}, \Cref{lem:Q}\\
 $y_0\cdots y_{k+1}$, $g_i$ & path in a tree component and its edges $g_i=y_{i-1}y_i$ & \Cref{sec:intro}, \Cref{lem:path}\\
 $k$ & inner vertices of that path; edges of a star & \Cref{sec:intro}\\
 $m$ & length of a cycle; number of edges of $T$ & \Cref{sec:intro}, \Cref{lem:count}\\
