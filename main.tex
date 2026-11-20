@@ -23,7 +23,8 @@
 \title{The whisker threshold for WARM graphs with equal rates}
 \author{Yitzchak Shmalo\\
 Einstein Institute of Mathematics, The Hebrew University of Jerusalem\\
-Givat Ram, Jerusalem, Israel}
+Givat Ram, Jerusalem, Israel\\
+\texttt{yitzchak.shmalo@gmail.com}}
 \date{}
 
 \begin{document}
@@ -37,7 +38,8 @@ Kriebel lowered the threshold to $17/4$. We prove the same conclusion for every 
 $4/3<\alpha\le 2$ every component is a star. The constant cannot be lowered: by results of van der Hofstad, Holmes,
 Kuznetsov and Ruszel and of Hirsch, Holmes and Kleptsyn, for $1<\alpha<4/3$ and unit initial counts all three edges
 of the triangle are infinitely reinforced with positive probability. For equal rates this answers, except at
-$\alpha=4/3$, the question of Kleptsyn, recorded by Aletti et al., whether the whisker threshold can be lowered to
+$\alpha=4/3$, the question of Kleptsyn, recorded by Aletti et al., whether the value of $\alpha$ above which every
+component is a whisker can be lowered to
 $4/3$.
 \end{abstract}
 
@@ -82,7 +84,8 @@ if some eigenvalue is positive.
 Hirsch, Holmes and Kleptsyn proved that from unit initial counts the vector $N_t/t$ converges almost surely to a
 semistable equilibrium, and with positive probability to any given linearly stable equilibrium
 \cite[Theorem~1]{HHK}, and, by \cite[Proposition~1]{HHK}, $E_\infty$ is almost surely the support of the limit. By
-\cite[Lemma~2]{Kr} the two almost sure statements hold from any positive integer initial counts. The problem is
+the argument of \cite[Lemma~2]{Kr}, given in \Cref{sec:stoch}, the two almost sure statements hold from any positive
+integer initial counts. The problem is
 therefore to describe the support of a semistable equilibrium. A \emph{component} of the support is a connected
 component, with at least one edge, of the graph $(V,\supp a)$. With equal rates, Holmes and Kleptsyn
 \cite[Theorem~2(a)]{HK} proved that for $\alpha>25$ every component of this support is a whisker, and Kriebel
@@ -192,7 +195,8 @@ alternating perturbation of \cite[Lemma~2]{HHK}. \Cref{thm:main} answers the sec
 Holmes and Kleptsyn \cite[Section~1.4, Question~1]{HK} asked what can be said about the equilibria on finite graphs
 for $\alpha<2$; parts~(b) and~(c) of \Cref{thm:det} answer part of this question for equal rates.
 
-For $2<\alpha\le 6$ the only bound on weights used is $a_e>1$ (\Cref{lem:hk}). Kriebel's proof for
+Below $17/4$ the bound $a_e>3/2$ below is not available; for $2<\alpha\le 6$
+\Cref{lem:count,lem:depth,lem:branch} need only $a_e>1$ (\Cref{lem:hk}). Kriebel's proof for
 $\alpha\ge 17/4$ shows that an edge neither of whose endpoints is a leaf has weight greater than $3/2$, by exact
 interval estimates for $17/4\le\alpha\le 7$ and a separate argument for $\alpha\ge 7$. Such an edge has a share
 greater than $1/2$ at both endpoints, so no two of them meet, and a tree of diameter at least four contains two that
@@ -371,7 +375,7 @@ depth-one vertex has children, and $T$ has diameter at most three.
 \begin{remark}\label{rem:nine}
 At $\alpha=9$ and $t=1/12$ the lower bound $t-1+(1+t)((1-t)/t)^{1/\alpha}$ for $\lambda$ in the proof of
 \Cref{lem:branch} equals $-\frac{11}{12}+\frac{13}{12}\,11^{1/9}$, which is below $1/2$ because $11\cdot 13^9<17^9$.
-The argument of \Cref{lem:branch} therefore does not extend to every $\alpha>2$.
+So at $\alpha=9$ this bound does not give $\lambda>1/2$.
 \end{remark}
 
 \section{\texorpdfstring{The range $1<\alpha\le 2$}{The range 1 < alpha <= 2}}\label{sec:small}
@@ -493,7 +497,7 @@ equilibrium need not be a forest there: the triangle equilibrium with equal weig
 Suppose first that all initial counts equal one. By \cite[Theorem~1]{HHK}, applied to the finite graph $G$ with
 equal rates, $N_t/t$ converges almost surely to a semistable equilibrium $a$ of \eqref{eq:flow}, and by
 \cite[Proposition~1]{HHK}, whose bounded-rate and bounded-degree hypotheses hold on a finite graph,
-$E_\infty=\supp a$ almost surely. By \cite[Lemma~2]{Kr}, these almost-sure conclusions transfer to any fixed
+$E_\infty=\supp a$ almost surely. As in \cite[Lemma~2]{Kr}, these almost-sure conclusions transfer to any fixed
 positive integer initial counts: a prescribed finite sequence of firings and choices leads from unit counts to the
 given counts with positive probability, and the future process then has the law started from those counts.
 
@@ -519,10 +523,8 @@ The author holds equity in Heights Labs and Convex Nexus Capital and has a manag
 
 \section*{Declaration of generative AI and AI-assisted technologies}
 
-The arguments of \Cref{sec:large,sec:small} were developed with AI systems (OpenAI Codex and Anthropic Claude agents
-working under the author's direction, with the shared memory of Math Brain \cite{MathBrainRepo,MathBrainPaper}
-and the Brain framework \cite{BrainFramework}), which also drafted the text and carried out the exact-arithmetic
-computations. These arguments build on the results of van der Hofstad, Holmes, Kuznetsov and Ruszel \cite{vdHHKR}, Holmes and
+The arguments of \Cref{sec:large,sec:small} were developed by the AI agents named in the Acknowledgments, working under
+the author's direction; they also drafted the text and carried out the exact-arithmetic computations. These arguments build on the results of van der Hofstad, Holmes, Kuznetsov and Ruszel \cite{vdHHKR}, Holmes and
 Kleptsyn \cite{HK}, Hirsch, Holmes and Kleptsyn \cite{HHK} and Kriebel \cite{Kr}, used as cited. The problem is due to Kleptsyn \cite{Kl} and is recorded in \cite{AOP}. The author directed
 the work and is responsible for the content of the paper and for decisions concerning its dissemination.
 
